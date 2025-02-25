@@ -20,7 +20,7 @@ function AnimatedWord() {
     <div className="px-2">
       <AnimatePresence mode="wait">
         <motion.div
-          className="text-3xl font-bold"
+          className="text-3xl font-bold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]"
           key={currentWordIndex} // Key change triggers animation
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}

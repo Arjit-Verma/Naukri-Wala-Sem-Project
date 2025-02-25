@@ -1,5 +1,11 @@
 import logo from "../assets/companylogo.png";
+import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Eye, EyeOff } from "lucide-react";
 function LoginComponent() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  const toggleVisibility = () => setIsVisible((prevState) => !prevState);
   return (
     /* This parts Contains the Login Page logo and Sign in text */
     <div className="flex min-h-full flex-1 flex-col justify-center px-8 py-6">
@@ -50,15 +56,29 @@ function LoginComponent() {
                 </a>
               </div>
             </div>
-            <div className="mt-2">
+            <div className="mt-2 relative">
               <input
-                type="password"
+                type={isVisible ? "text" : "password"}
                 id="password"
                 name="password"
                 autoComplete="current-password"
                 required
                 className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
               />
+              <button
+                className="absolute inset-y-0 end-0 flex items-center z-20 px-2.5 cursor-pointer text-gray-400 rounded-e-md  focus-visible:text-indigo-500 hover:text-indigo-500 transition-colors"
+                type="button"
+                onClick={toggleVisibility}
+                aria-label={isVisible ? "Hide password" : "Show password"}
+                aria-pressed={isVisible}
+                aria-controls="password"
+              >
+                {isVisible ? (
+                  <EyeOff size={20} aria-hidden="true" />
+                ) : (
+                  <Eye size={20} aria-hidden="true" />
+                )}
+              </button>
             </div>
           </div>
 
@@ -72,10 +92,12 @@ function LoginComponent() {
           </div>
           <div className="text-gray-700 flex justify-items-normal">
             Not a member?
-            <div className="text-indigo-500 font-semibold  hover:underline hover:rounded-2xl px-2">
-              {" "}
-              Sign Up
-            </div>
+            <Link to="/register">
+              <div className="text-indigo-500 font-semibold  hover:underline hover:rounded-2xl px-2">
+                {" "}
+                Sign Up
+              </div>
+            </Link>
           </div>
         </form>
       </div>
