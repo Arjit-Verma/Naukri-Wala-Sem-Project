@@ -1,4 +1,4 @@
-# 🚀 My Project Name
+# 🚀 Project Description
 
 A full-stack web application built with **React (Vite) + TypeScript + TailwindCSS** for the frontend and **Node.js + Express + MongoDB (Mongoose)** for the backend.
 
