@@ -1,9 +1,7 @@
-import NavBarItem, { MenuItem } from "../functions/NavBarItem";
-import HeroSection from "../components/HeroSection";
-import FooterSection from "../components/FooterSection";
-
-import { ArrowRight } from "lucide-react";
-import StudentHS from "../components/student/StudentHS";
+import NavBarItem, { MenuItem } from "../../functions/NavBarItem";
+import HeroSection from "../../components/HeroSection";
+import FooterSection from "../../components/FooterSection";
+import StudentHS from "../../components/student/StudentHS";
 
 const NavBarMenu: MenuItem[] = [
   { id: 0, title: "Info", link: "/" },
@@ -14,19 +12,19 @@ const NavBarMenu: MenuItem[] = [
   { id: 5, title: "About Us", link: "/aboutus" },
 ];
 
-function LandingPage() {
+function StudentLandPage() {
   return (
     <div id="/Home" className="h-screen w-screen flex flex-col overflow-hidden">
       {/* Navigation Bar */}
       <NavBarItem menuItems={NavBarMenu} />
       {/* Scrollable Content */}
       <div className="relative flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 z-10">
-        {/* Hero Section with Animation */}
-        <HeroSection></HeroSection>
+        {/* Hero Section with Aanimation */}
+        <StudentHS></StudentHS>
         <FooterSection />
       </div>
     </div>
   );
 }
 
-export default LandingPage;
+export default StudentLandPage;

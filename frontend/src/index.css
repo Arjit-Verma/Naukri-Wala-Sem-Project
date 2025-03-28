@@ -46,3 +46,22 @@ button:focus-visible {
     color: #747bff;
   }
 }
+/* Light Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f0f0f0; /* Light Gray Track */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d1d1d1; /* Soft Light Gray Thumb */
+  border-radius: 10px;
+  border: 2px solid #f0f0f0; /* Blends with track */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #bcbcbc; /* Slightly darker on hover */
+}
