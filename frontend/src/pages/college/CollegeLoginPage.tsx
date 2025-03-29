@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import loginIllustration from "../../assets/college.jpg";
-
+//This is the College Login Page
+//Animated Background can be added and could be made better for responsiveness
+//Edited by: Arjit Verma 22bcs015
 function CollegeLoginPage() {
   return (
     <div className="w-full bg-white pt-8 pl-8">

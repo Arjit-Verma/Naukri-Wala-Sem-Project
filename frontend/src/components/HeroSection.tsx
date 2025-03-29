@@ -2,6 +2,8 @@ import logo from "../assets/heroImage.png";
 
 import { ArrowRight } from "lucide-react";
 
+//Base Hero Section For the First Landing Page
+
 function HeroSection() {
   return (
     <div className="bg-white">
