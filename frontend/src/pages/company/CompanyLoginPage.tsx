@@ -8,9 +8,9 @@ import loginIllustration from "../../assets/office.jpg";
 
 function CompanyLoginPage() {
   return (
-    <div className=" w-full bg-white pt-8 pl-8">
+    <div className="fixed w-full bg-white pt-4 pl-4 sm:pt-8 sm:pl-8">
       {/* Back Button Link */}
-      <div className="">
+      <div className="fixed sm:p-4">
         <Link
           to="/student"
           className="mb-4 text-black flex items-center space-x-2"
@@ -27,7 +27,7 @@ function CompanyLoginPage() {
               Welcome Back !
             </h2>
 
-            <div className="py-5 lg:px-8 bg-white shadow-md rounded-md">
+            <div className="py-5  bg-white shadow-md rounded-md">
               <div className="text-center">
                 <h2 className="mt-2 text-2xl font-bold tracking-tight text-gray-900">
                   Login to Your Account
@@ -36,8 +36,6 @@ function CompanyLoginPage() {
 
               <div className="mt-6 sm:mx-auto sm:w-full sm:max-w-sm">
                 <form action="#" method="POST" className="space-y-5">
-                  {/* Name */}
-
                   {/* Email */}
                   <div>
                     <label
@@ -118,7 +116,7 @@ function CompanyLoginPage() {
                 <p className="mt-6 text-center text-sm text-gray-500">
                   Don't have an account?{" "}
                   <Link
-                    to="/signup"
+                    to="/student/signup"
                     className="text-indigo-600 hover:text-indigo-500"
                   >
                     Sign Up

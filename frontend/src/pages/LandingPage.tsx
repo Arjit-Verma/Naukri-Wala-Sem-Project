@@ -2,9 +2,6 @@ import NavBarItem, { MenuItem } from "../functions/NavBarItem";
 import HeroSection from "../components/HeroSection";
 import FooterSection from "../components/FooterSection";
 
-import { ArrowRight } from "lucide-react";
-import StudentHS from "../components/student/StudentHS";
-
 const NavBarMenu: MenuItem[] = [
   { id: 0, title: "Info", link: "/" },
   { id: 1, title: "Students", link: "/student" },

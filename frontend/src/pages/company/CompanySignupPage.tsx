@@ -149,7 +149,7 @@ function CompanySignupPage() {
                 <p className="mt-6 text-center text-sm text-gray-500">
                   Already have an account?{" "}
                   <Link
-                    to="/signup"
+                    to="/company/login"
                     className="text-indigo-600 hover:text-indigo-500"
                   >
                     Sign Up
