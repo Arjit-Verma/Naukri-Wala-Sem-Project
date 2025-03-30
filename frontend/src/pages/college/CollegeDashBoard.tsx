@@ -4,13 +4,14 @@ import bag from "../../assets/bag.png";
 import student from "../../assets/cstudent.png";
 import { useState } from "react";
 import { MenuItem2 } from "../../types";
+import { ProfileCard } from "../../components/company/ProfileCard";
+import CollegeNavBar from "../../components/company/CollegeNavBar";
 
 const NavBarMenu: MenuItem2[] = [
-  { id: 0, title: "Dashboard", link: "/student/dashboard" },
-  { id: 1, title: "Resume", link: "/student/resume" },
-  { id: 2, title: "ATS Score", link: "/ats_score" },
-  { id: 3, title: "Templates", link: "/student/coldmail" },
-  { id: 4, title: "Company", link: "/student/companylist" },
+  { id: 0, title: "Dashboard", link: "/college/dashboard" },
+  { id: 1, title: "Stats", link: "/college/stats" },
+  { id: 2, title: "Student Info", link: "/college/studentinfo" },
+  { id: 3, title: "Company Info", link: "/college/companyinfo" },
 ];
 
 const jobCompanies = [
@@ -25,20 +26,33 @@ const jobCompanies = [
   { name: "Apple", logo: "https://logo.clearbit.com/apple.com" },
   { name: "Adobe", logo: "https://logo.clearbit.com/adobe.com" },
 ];
-export default function StudentDashboard() {
+
+const profiles = [
+  { name: "John Doe", company: "Google" },
+  { name: "Alice Johnson", company: "Microsoft" },
+  { name: "Michael Simbal", company: "Denva Corp" },
+  { name: "Alice Johnson", company: "Microsoft" },
+  { name: "Michael Simbal", company: "Denva Corp" },
+  { name: "Alice Johnson", company: "Microsoft" },
+  { name: "Michael Simbal", company: "Denva Corp" },
+  { name: "Alice Johnson", company: "Microsoft" },
+  { name: "Michael Simbal", company: "Denva Corp" },
+];
+
+export default function CollegeDashboard() {
   const [showMore, setShowMore] = useState(false);
 
   return (
     <div className="h-screen w-screen flex flex-col overflow-hidden bg-white">
-      <StakeNavBar menuItems={NavBarMenu}></StakeNavBar>
+      <CollegeNavBar menuItems={NavBarMenu}></CollegeNavBar>
       {/* Welcome Banner */}
       <div className="py-20 flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 z-10">
-        <section className="bg-linear-to-t from-sky-500 to-indigo-500 text-white  rounded-xl mx-4 mt-6 flex flex-col md:flex-row justify-between items-center">
+        <section className="bg-linear-to-t from-purple-400 to-indigo-500 text-white  rounded-xl mx-4 mt-6 flex flex-col md:flex-row justify-between items-center">
           <div className="p-6">
             <h3 className="text-sm py-4">1st April </h3>
-            <h1 className="text-3xl font-bold">Welcome back, Arjit!</h1>
+            <h1 className="text-3xl font-bold">Welcome back, CGC!</h1>
             <p className="text-gray-200">
-              Always stay updated in your student portal
+              Always stay updated in your this portal
             </p>
           </div>
           <div className="flex items-baseline gap-4 px-5">
@@ -55,9 +69,7 @@ export default function StudentDashboard() {
 
         {/* Job Applications */}
         <section className="mt-6 px-10">
-          <h2 className="text-xl font-semibold text-black">
-            For Job (Check where you can apply)
-          </h2>
+          <h2 className="text-xl font-semibold text-black">Company Coming</h2>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mt-4">
             {jobCompanies
               .slice(0, showMore ? jobCompanies.length : 5)
@@ -72,9 +84,6 @@ export default function StudentDashboard() {
                     className="h-20 w-20 mb-2"
                   />
                   <p>{company.name}</p>
-                  <button className="mt-2 px-4 py-2 bg-blue-600 text-white rounded">
-                    Apply
-                  </button>
                 </div>
               ))}
           </div>
@@ -90,22 +99,16 @@ export default function StudentDashboard() {
 
         {/* Completed Courses */}
         <section className="mt-6 px-4">
-          <h2 className="text-xl font-semibold">Courses Completed</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-            {[
-              "Object Oriented Programming",
-              "Fundamentals of Database Systems",
-              "Computer Architecture",
-            ].map((course, index) => (
-              <div
+          <h2 className="text-xl font-semibold">Students Placed</h2>
+          <div className="items-center grid grid-cols-2  md:grid-cols-6 mt-4 ">
+            {profiles.map((profile, index) => (
+              <ProfileCard
                 key={index}
-                className="p-4 bg-white shadow rounded-lg flex justify-between items-center"
-              >
-                <p>{course}</p>
-                <span className="px-3 py-1 border border-gray-400 rounded text-gray-600">
-                  Completed
-                </span>
-              </div>
+                name={profile.name}
+                rollnum="22BCS015"
+                company={profile.company}
+                date="Arpil 20, 2022"
+              />
             ))}
           </div>
         </section>

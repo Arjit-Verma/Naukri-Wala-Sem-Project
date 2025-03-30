@@ -1,17 +1,17 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react"; // Icons for menu and close
-import clogo from "../assets/companylogo.png";
+import clogo from "../../assets/companylogo.png";
 
-import ProfileTemplate from "./ProfileProps";
-import student from "../assets/cstudent.png";
-import { MenuItem2 } from "../types";
+import ProfileTemplate from "../../functions/ProfileProps";
+import student from "../../assets/cstudent.png";
+import { MenuItem2 } from "../../types";
 
 type NavbarProps = {
   menuItems: MenuItem2[];
 };
 
-function StakeNavBar({ menuItems }: NavbarProps) {
+function CollegeNavBar({ menuItems }: NavbarProps) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [profilePic, setProfilePic] = useState<string | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false); // Mobile menu toggle
@@ -49,10 +49,10 @@ function StakeNavBar({ menuItems }: NavbarProps) {
         {/* Login / Sign Up or Profile */}
         <div className="hidden md:flex items-center space-x-4">
           <ProfileTemplate
-            name={"Arjit Verma"}
-            designation={"3rd Year"}
+            name={"CGC"}
+            designation={""}
             avatarUrl={student}
-            link="/student/profile"
+            link="/college/profile"
           ></ProfileTemplate>
         </div>
 
@@ -100,4 +100,4 @@ function StakeNavBar({ menuItems }: NavbarProps) {
   );
 }
 
-export default StakeNavBar;
+export default CollegeNavBar;

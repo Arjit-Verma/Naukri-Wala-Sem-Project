@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import { PlusCircle, Upload, Edit } from "lucide-react";
-import StakeNavBar, { MenuItem2 } from "../../functions/StakeNavBar";
+import StakeNavBar from "../../functions/StakeNavBar";
 import student from "../../assets/student.jpg";
-
+import { MenuItem2 } from "../../types";
 const NavBarMenu: MenuItem2[] = [
-  { id: 0, title: "Dashboard", link: "/student_dashboard" },
-  { id: 1, title: "Resume", link: "/student_resume" },
+  { id: 0, title: "Dashboard", link: "/student/dashboard" },
+  { id: 1, title: "Resume", link: "/student/resume" },
   { id: 2, title: "ATS Score", link: "/ats_score" },
-  { id: 3, title: "Templates", link: "/cold_et" },
+  { id: 3, title: "Templates", link: "/student/coldmail" },
+  { id: 4, title: "Company", link: "/student/companylist" },
 ];
 
 interface Profile {
@@ -135,7 +136,7 @@ export default function ProfilePage() {
               {section.title}
             </h2>
             <div className="mt-2 border-2 border-gray-300"></div>
-            <div className="mt-4 space-y-2">
+            <div className="mt-4 space-y-4">
               {section.data?.map((item, index) =>
                 typeof item === "string" ? ( // Handle certificates (string)
                   <div key={index} className="bg-gray-100 rounded">

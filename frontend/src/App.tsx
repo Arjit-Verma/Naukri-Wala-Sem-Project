@@ -13,6 +13,13 @@ import CollegeLoginPage from "./pages/college/CollegeLoginPage";
 import CollegeSignupPage from "./pages/college/CollegeSignupPage";
 import StudentDashboard from "./pages/student/StudentDashBoard";
 import StudentProfilePage from "./pages/student/StudentProfilePage";
+import StudentColdMail from "./pages/student/StudentColdMail";
+import StudentResume from "./pages/student/StudentResume";
+import { StudentCompanyList } from "./pages/student/StudentCompanyList";
+import CollegeDashboard from "./pages/college/CollegeDashBoard";
+import { CollegeCompanyInfo } from "./pages/college/CollegeCompanyInfo";
+import { CollegeStudentInfo } from "./pages/college/CollegeStudentInfo";
+import { CollegeStats } from "./pages/college/CollegeStats";
 
 function App() {
   return (
@@ -33,12 +40,28 @@ function App() {
         ></Route>
         <Route path="/student/login" element={<StudentLoginPage />}></Route>
         <Route path="/student/signup" element={<StudentSignupPage />}></Route>
-        <Route path="/company/login" element={<CompanyLoginPage />}></Route>
-        <Route path="/company/signup" element={<CompanySignupPage />}></Route>
-        <Route path="/college/login" element={<CollegeLoginPage />}></Route>
-        <Route path="/college/signup" element={<CollegeSignupPage />}></Route>
         <Route path="/student/dashboard" element={<StudentDashboard />}></Route>
         <Route path="/student/profile" element={<StudentProfilePage />}></Route>
+        <Route path="/student/coldmail" element={<StudentColdMail />}></Route>
+        <Route path="/student/resume" element={<StudentResume />}></Route>
+        <Route
+          path="/student/companylist"
+          element={<StudentCompanyList />}
+        ></Route>
+        <Route path="/college/login" element={<CollegeLoginPage />}></Route>
+        <Route path="/college/signup" element={<CollegeSignupPage />}></Route>
+        <Route path="/college/dashboard" element={<CollegeDashboard />}></Route>
+        <Route
+          path="/college/companyinfo"
+          element={<CollegeCompanyInfo />}
+        ></Route>
+        <Route
+          path="/college/studentinfo"
+          element={<CollegeStudentInfo />}
+        ></Route>
+        <Route path="/college/stats" element={<CollegeStats />}></Route>
+        <Route path="/company/login" element={<CompanyLoginPage />}></Route>
+        <Route path="/company/signup" element={<CompanySignupPage />}></Route>
 
         {/* <Route path="/login" element={<LoginPage />}></Route>
         <Route path="/register" element={<SignUpPage />}></Route> */}
