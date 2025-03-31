@@ -5,7 +5,7 @@ import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 //This is Footer Section For the Hero Section Page, This Will Be Global for Each Landing Page for each StakeHolder
 function FooterSection() {
   return (
-    <footer className="bg-white dark:bg-gray-900">
+    <footer className="bg-gray-900">
       <div className="w-full justify-between max-w-screen-xl mx-auto p-6 md:py-10">
         {/* Top Section */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -27,10 +27,8 @@ function FooterSection() {
 
           {/* Navigation Links */}
           <div>
-            <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
-              Quick Links
-            </h2>
-            <ul className="mt-4 space-y-2 text-gray-500 dark:text-gray-400">
+            <h2 className="text-lg font-semibold text-gray-200">Quick Links</h2>
+            <ul className="mt-4 space-y-2 text-gray-400">
               <li>
                 <a href="#" className="hover:underline">
                   About
@@ -56,9 +54,7 @@ function FooterSection() {
 
           {/* Social Media Links */}
           <div>
-            <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
-              Follow Us
-            </h2>
+            <h2 className="text-lg font-semibold text-gray-200">Follow Us</h2>
             <div className="flex mt-4 space-x-4">
               <a href="#" className="text-gray-500 hover:text-blue-600">
                 <FaFacebook size={24} />

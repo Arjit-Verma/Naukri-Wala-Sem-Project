@@ -24,7 +24,7 @@ function StudentHS() {
               </p>
 
               <a
-                href="#"
+                href="/student/signup"
                 title=""
                 className="inline-flex items-center px-6 py-4 mt-8 font-semibold text-black transition-all duration-200 bg-yellow-300 rounded-full lg:mt-16 hover:bg-yellow-400 focus:bg-yellow-400"
                 role="button"
@@ -48,7 +48,7 @@ function StudentHS() {
               <p className="mt-5 text-gray-600">
                 Already joined us?{" "}
                 <a
-                  href="#"
+                  href="/student/login"
                   title=""
                   className="text-black transition-all duration-200 hover:underline"
                 >

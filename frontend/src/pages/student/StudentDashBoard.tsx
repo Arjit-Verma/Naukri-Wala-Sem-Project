@@ -8,7 +8,7 @@ import { MenuItem2 } from "../../types";
 const NavBarMenu: MenuItem2[] = [
   { id: 0, title: "Dashboard", link: "/student/dashboard" },
   { id: 1, title: "Resume", link: "/student/resume" },
-  { id: 2, title: "ATS Score", link: "/ats_score" },
+  { id: 2, title: "ATS Score", link: "/student/ats_score" },
   { id: 3, title: "Templates", link: "/student/coldmail" },
   { id: 4, title: "Company", link: "/student/companylist" },
 ];
@@ -64,7 +64,7 @@ export default function StudentDashboard() {
               .map((company, index) => (
                 <div
                   key={index}
-                  className="p-4 bg-white drop-shadow-md shadow rounded-lg flex flex-col items-center"
+                  className="p-4 bg-linear-to-t from-sky-200 to-indigo-200 drop-shadow-md shadow rounded-lg flex flex-col items-center"
                 >
                   <img
                     src={company.logo}
@@ -89,20 +89,24 @@ export default function StudentDashboard() {
         <div className="my-6 border-b border-gray-300"></div>
 
         {/* Completed Courses */}
-        <section className="mt-6 px-4">
+        <section className="mt-6 px-8">
           <h2 className="text-xl font-semibold">Courses Completed</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
             {[
               "Object Oriented Programming",
               "Fundamentals of Database Systems",
               "Computer Architecture",
+              "Computer Architecture",
+              "Computer Architecture",
+              "Computer Architecture",
+              "Computer Architecture",
             ].map((course, index) => (
               <div
                 key={index}
-                className="p-4 bg-white shadow rounded-lg flex justify-between items-center"
+                className="p-8 bg-linear-to-t from-sky-200 to-indigo-200 shadow rounded-lg flex justify-between items-center"
               >
                 <p>{course}</p>
-                <span className="px-3 py-1 border border-gray-400 rounded text-gray-600">
+                <span className="px-3 py-1 border border-gray-400 rounded bg-blue-100 text-gray-600">
                   Completed
                 </span>
               </div>

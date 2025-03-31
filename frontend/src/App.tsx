@@ -20,6 +20,15 @@ import CollegeDashboard from "./pages/college/CollegeDashBoard";
 import { CollegeCompanyInfo } from "./pages/college/CollegeCompanyInfo";
 import { CollegeStudentInfo } from "./pages/college/CollegeStudentInfo";
 import { CollegeStats } from "./pages/college/CollegeStats";
+import CompanyDashBoard from "./pages/company/CompanyDashBoard";
+import { CompanyStats } from "./pages/company/CompanyStats";
+import CompanyCollegeInfo from "./pages/company/CompanyCollegeInfo";
+import JobListPage from "./pages/company/JobListPage";
+import JobEditPage from "./pages/company/JobEditPage";
+import CompanyJobUpdate from "./pages/company/CompanyJobUpdate";
+import CompanyStudentInfo from "./pages/company/CompanyStudentInfo";
+import CompanyApplication from "./pages/company/CompanyApplication";
+import StudentAts from "./pages/student/StudentAts";
 
 function App() {
   return (
@@ -48,6 +57,8 @@ function App() {
           path="/student/companylist"
           element={<StudentCompanyList />}
         ></Route>
+        <Route path="/student/ats_score" element={<StudentAts />}></Route>
+
         <Route path="/college/login" element={<CollegeLoginPage />}></Route>
         <Route path="/college/signup" element={<CollegeSignupPage />}></Route>
         <Route path="/college/dashboard" element={<CollegeDashboard />}></Route>
@@ -62,6 +73,28 @@ function App() {
         <Route path="/college/stats" element={<CollegeStats />}></Route>
         <Route path="/company/login" element={<CompanyLoginPage />}></Route>
         <Route path="/company/signup" element={<CompanySignupPage />}></Route>
+        <Route path="/company/dashboard" element={<CompanyDashBoard />}></Route>
+
+        <Route path="/company/stats" element={<CompanyStats />}></Route>
+        <Route
+          path="/company/collegeinfo"
+          element={<CompanyCollegeInfo />}
+        ></Route>
+        <Route
+          path="/company/studentinfo"
+          element={<CompanyStudentInfo />}
+        ></Route>
+        <Route
+          path="/company/application"
+          element={<CompanyApplication />}
+        ></Route>
+        <Route path="company/updatejob" element={<JobListPage />} />
+        <Route path="company/updatejob/add" element={<JobEditPage />} />
+        <Route path="company/updatejob/edit/:id" element={<JobEditPage />} />
+        <Route
+          path="company/updatejob/apply/:id"
+          element={<CompanyJobUpdate />}
+        />
 
         {/* <Route path="/login" element={<LoginPage />}></Route>
         <Route path="/register" element={<SignUpPage />}></Route> */}

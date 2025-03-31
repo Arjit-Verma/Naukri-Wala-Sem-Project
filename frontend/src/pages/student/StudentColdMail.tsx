@@ -54,10 +54,11 @@ import React from "react";
 import { useState } from "react";
 import StakeNavBar from "../../functions/StakeNavBar";
 import { MenuItem2 } from "../../types";
+
 const NavBarMenu: MenuItem2[] = [
   { id: 0, title: "Dashboard", link: "/student/dashboard" },
   { id: 1, title: "Resume", link: "/student/resume" },
-  { id: 2, title: "ATS Score", link: "/ats_score" },
+  { id: 2, title: "ATS Score", link: "/student/ats_score" },
   { id: 3, title: "Templates", link: "/student/coldmail" },
   { id: 4, title: "Company", link: "/student/companylist" },
 ];
@@ -154,7 +155,7 @@ const StudentColdMail = () => {
           {emailTemplates.map((template) => (
             <div
               key={template.id}
-              className="border p-4 rounded-lg shadow-lg drop-shadow-md"
+              className="border bg-linear-to-t from-purple-100 to-gray-200 p-4 rounded-lg shadow-lg drop-shadow-md"
             >
               <h2 className="font-semibold">{template.title}</h2>
               <p className="text-gray-600 text-sm">{template.subject}</p>

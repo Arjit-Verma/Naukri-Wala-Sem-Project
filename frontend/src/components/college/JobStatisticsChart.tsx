@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 type JobStatisticsData = {
   date: string;
@@ -78,7 +78,7 @@ const JobStatisticsChart = () => {
 
       <div className="space-y-3">
         {statsData.map((day, index) => (
-          <div key={index} className="flex items-center">
+          <div key={index} className="flex items-center py-6">
             <div className="w-24 text-xs text-gray-500">{day.date}</div>
             <div className="flex-1 flex space-x-1">
               <div

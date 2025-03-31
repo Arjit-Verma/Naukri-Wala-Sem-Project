@@ -1,4 +1,4 @@
-import CollegeNavBar from "../../components/company/CollegeNavBar";
+import CollegeNavBar from "../../components/college/CollegeNavBar";
 import JobStatisticsChart from "../../components/college/JobStatisticsChart";
 import PlacementAnalysis from "../../components/college/PlacmentAnalysis";
 import StudentInfo from "../../components/college/StudentInfo";

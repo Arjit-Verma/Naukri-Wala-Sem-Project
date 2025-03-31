@@ -25,7 +25,7 @@ import {
 } from "../../components/ui/table";
 
 import { MenuItem2 } from "../../types";
-import CollegeNavBar from "../../components/company/CollegeNavBar";
+import CollegeNavBar from "../../components/college/CollegeNavBar";
 
 const NavBarMenu: MenuItem2[] = [
   { id: 0, title: "Dashboard", link: "/college/dashboard" },

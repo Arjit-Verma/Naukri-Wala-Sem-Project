@@ -1,12 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import loginIllustration from "../../assets/imagecollege.jpg";
 
-//This is the Student Login Page
-//Animated Background can be added and could be made better for responsiveness
-//Edited by: Arjit Verma 22bcs015
-
 function StudentLoginPage() {
+  const navigate = useNavigate();
+
+  const handleSubmit = (event: { preventDefault: () => void }) => {
+    event.preventDefault();
+    // Add your authentication logic here
+    // For example, you can make an API call to authenticate the user
+
+    // If authentication is successful, navigate to the dashboard
+    navigate("/student/dashboard");
+  };
+
   return (
     <div className="fixed w-full bg-white pt-4 pl-4 sm:pt-8 sm:pl-8">
       {/* Back Button Link */}
@@ -35,7 +42,7 @@ function StudentLoginPage() {
               </div>
 
               <div className="mt-6 sm:mx-auto sm:w-full sm:max-w-sm">
-                <form action="#" method="POST" className="space-y-5">
+                <form onSubmit={handleSubmit} className="space-y-5">
                   {/* Email */}
                   <div>
                     <label

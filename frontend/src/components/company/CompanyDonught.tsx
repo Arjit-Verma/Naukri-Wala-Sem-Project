@@ -4,9 +4,9 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const DoughnutChart: React.FC = () => {
+const CompanyDoughnut: React.FC = () => {
   const data = {
-    labels: ["Recruited", "Rejected", "Interview", "Processing"],
+    labels: ["Placed", "Not Placed", "Interview", "Processing"],
     datasets: [
       {
         label: "Student Status",
@@ -21,11 +21,11 @@ const DoughnutChart: React.FC = () => {
   return (
     <div className="bg-white shadow-md rounded-lg p-4">
       <div className="max-w-xs mx-auto">
-        <h2 className="text-lg font-semibold mb-2">Recruitment Chart</h2>
+        <h2 className="text-lg font-semibold mb-2">Pie Chart Analysis</h2>
         <Doughnut data={data} />
       </div>
     </div>
   );
 };
 
-export default DoughnutChart;
+export default CompanyDoughnut;

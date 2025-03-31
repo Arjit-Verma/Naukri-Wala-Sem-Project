@@ -1,12 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import loginIllustration from "../../assets/imagecollege.jpg";
 
-//This is the Student Login Page
-//Animated Background can be added and could be made better for responsiveness
-//Edited by: Arjit Verma 22bcs015
-
 function StudentSignupPage() {
+  const navigate = useNavigate();
+
+  const handleSubmit = (event: { preventDefault: () => void }) => {
+    event.preventDefault();
+    // Add your sign-up logic here
+    // For example, you can make an API call to register the user
+
+    // If sign-up is successful, navigate to the dashboard
+    navigate("/student/dashboard");
+  };
+
   return (
     <div className="w-full bg-white pt-4 pl-4">
       <div className="">
@@ -20,10 +27,8 @@ function StudentSignupPage() {
 
       <div className="flex items-center justify-center min-h-screen w-full bg-white">
         <div className="max-w-6xl min-h-screen w-full grid grid-cols-1 md:grid-cols-2 gap-20 ">
-          {/* Left Side - Login Form */}
+          {/* Left Side - Sign-up Form */}
           <div className="flex flex-col justify-center w-full">
-            {/* Back Button */}
-
             {/* Welcome Text */}
             <h2 className="text-3xl font-bold text-gray-900 mb-6">
               Get Started
@@ -37,7 +42,7 @@ function StudentSignupPage() {
               </div>
 
               <div className="mt-2 sm:mx-auto sm:w-full sm:max-w-sm">
-                <form action="#" method="POST" className="space-y-5">
+                <form onSubmit={handleSubmit} className="space-y-5">
                   {/* Name */}
                   <div>
                     <label
@@ -94,12 +99,13 @@ function StudentSignupPage() {
                       className="block w-full rounded-md border border-gray-300 px-3 py-2 text-gray-900 outline-none focus:ring-2 focus:ring-indigo-600 sm:text-sm"
                       placeholder="Enter your password"
                     />
-                    {/* Re-enter Password */}
                   </div>
+
+                  {/* Re-enter Password */}
                   <div>
                     <div className="flex items-center justify-between">
                       <label
-                        htmlFor="password"
+                        htmlFor="confirm-password"
                         className="block text-sm font-medium text-gray-900"
                       >
                         Re-enter Password
@@ -115,7 +121,7 @@ function StudentSignupPage() {
                     />
                   </div>
 
-                  {/* Sign In Button */}
+                  {/* Sign Up Button */}
                   <div>
                     <button
                       type="submit"
@@ -145,7 +151,7 @@ function StudentSignupPage() {
                   </button>
                 </div>
 
-                {/* Sign Up Link */}
+                {/* Sign In Link */}
                 <p className="mt-6 text-center text-sm text-gray-500">
                   Already have an account?{" "}
                   <Link

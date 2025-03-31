@@ -6,7 +6,7 @@ import { MenuItem2 } from "../../types";
 const NavBarMenu: MenuItem2[] = [
   { id: 0, title: "Dashboard", link: "/student/dashboard" },
   { id: 1, title: "Resume", link: "/student/resume" },
-  { id: 2, title: "ATS Score", link: "/ats_score" },
+  { id: 2, title: "ATS Score", link: "/student/ats_score" },
   { id: 3, title: "Templates", link: "/student/coldmail" },
   { id: 4, title: "Company", link: "/student/companylist" },
 ];

@@ -24,60 +24,48 @@ function HeroSection() {
               <p className="mt-4 text-base text-black lg:mt-8 sm:text-xl">
                 Grow your career With Our System
               </p>
-              <div className="flex flex-col space-y-4 mt-8 lg:mt-16">
-                <a
-                  href="/student"
-                  title=""
-                  className="inline-flex items-center px-6 py-4 font-semibold text-black transition-all duration-200 bg-yellow-300 rounded-full hover:bg-yellow-400 focus:bg-yellow-400"
-                  role="button"
-                >
-                  Join As Student
-                  <svg
-                    className="w-6 h-6 ml-2"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  ></svg>
-                </a>
-                <a
-                  href="/college"
-                  title=""
-                  className="inline-flex items-center px-6 py-4 font-semibold text-black transition-all duration-200 bg-yellow-300 rounded-full hover:bg-yellow-400 focus:bg-yellow-400"
-                  role="button"
-                >
-                  Join As University
-                  <svg
-                    className="w-4 h-6 ml-2"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  ></svg>
-                </a>
-                <a
-                  href="/company"
-                  title=""
-                  className="inline-flex items-center px-6 py-4 font-semibold text-black transition-all duration-200 bg-yellow-300 rounded-full hover:bg-yellow-400 focus:bg-yellow-400"
-                  role="button"
-                >
-                  Join As Company
-                  <svg
-                    className="w-6 h-6 ml-2"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  ></svg>
-                </a>
+              <div className="flex flex-col space-y-4   lg:mt-16">
+                <div className="flex items-center">
+                  <a
+                    href="/student"
+                    title=""
+                    className="inline-flex items-center w-45 px-6 py-4 font-semibold text-black transition-all duration-200 bg-yellow-300 rounded-full hover:bg-yellow-400 focus:bg-yellow-400"
+                    role="button"
+                  >
+                    Join As Student
+                  </a>
+                  <div className="px-6 font-semibold text-2xl">
+                    Get the Time You Deserve
+                  </div>
+                </div>
+
+                <div className="flex items-center">
+                  <a
+                    href="/college"
+                    title=""
+                    className="inline-flex items-center w-45 px-6 py-4 font-semibold text-black transition-all duration-200 bg-yellow-300 rounded-full hover:bg-yellow-400 focus:bg-yellow-400"
+                    role="button"
+                  >
+                    Join As University
+                  </a>
+                  <div className="px-6 font-semibold text-2xl">
+                    Get the System You awaits
+                  </div>
+                </div>
+                <div className="flex items-center">
+                  <a
+                    href="/company"
+                    title=""
+                    className="inline-flex items-center w-45 px-6 py-4 font-semibold text-black transition-all duration-200 bg-yellow-300 rounded-full hover:bg-yellow-400 focus:bg-yellow-400"
+                    role="button"
+                  >
+                    Join As Company
+                  </a>
+                  <div className="px-6 font-semibold text-2xl">
+                    Hire People At Better Pace
+                  </div>
+                </div>
               </div>
-              <p className="mt-5 text-gray-600">
-                Already joined us?{" "}
-                <a
-                  href="#"
-                  title=""
-                  className="text-black transition-all duration-200 hover:underline"
-                >
-                  Log in
-                </a>
-              </p>
             </div>
             <div>
               <img className="h-130 w-200" src={logo} alt="" />

@@ -3,27 +3,65 @@ import bag from "../../assets/bag.png";
 import student from "../../assets/cstudent.png";
 import { useState } from "react";
 import { MenuItem2 } from "../../types";
-import { ProfileCard } from "../../components/college/ProfileCard";
-import CollegeNavBar from "../../components/college/CollegeNavBar";
+
+import { CompanyProfileCard } from "../../components/company/CompanyProfileCard";
+import CompanyNavBar from "../../components/company/CompanyNavBar";
 
 const NavBarMenu: MenuItem2[] = [
-  { id: 0, title: "Dashboard", link: "/college/dashboard" },
-  { id: 1, title: "Stats", link: "/college/stats" },
-  { id: 2, title: "Student Info", link: "/college/studentinfo" },
-  { id: 3, title: "Company Info", link: "/college/companyinfo" },
+  { id: 0, title: "Dashboard", link: "/company/dashboard" },
+  { id: 1, title: "Stats", link: "/company/stats" },
+  { id: 2, title: "Student Info", link: "/company/studentinfo" },
+  { id: 3, title: "College Info", link: "/company/collegeinfo" },
+  { id: 4, title: "Update Job", link: "/company/updatejob" },
+  { id: 5, title: "Application", link: "/company/application" },
 ];
 
-const jobCompanies = [
-  { name: "Amazon", logo: "https://logo.clearbit.com/amazon.com" },
-  { name: "NVIDIA", logo: "https://logo.clearbit.com/nvidia.com" },
-  { name: "Infosys", logo: "https://logo.clearbit.com/infosys.com" },
-  { name: "IBM", logo: "https://logo.clearbit.com/ibm.com" },
-  { name: "TCS", logo: "https://logo.clearbit.com/tcs.com" },
-  { name: "Google", logo: "https://logo.clearbit.com/google.com" },
-  { name: "Microsoft", logo: "https://logo.clearbit.com/microsoft.com" },
-  { name: "Meta", logo: "https://logo.clearbit.com/meta.com" },
-  { name: "Apple", logo: "https://logo.clearbit.com/apple.com" },
-  { name: "Adobe", logo: "https://logo.clearbit.com/adobe.com" },
+interface College {
+  name: string;
+  logo: string;
+}
+
+const colleges: College[] = [
+  {
+    name: "Stanford University",
+    logo: "https://cdn.freelogovectors.net/wp-content/uploads/2019/02/IIT-bombay-Indian-Institute-of-Technology-Bombay.png",
+  },
+  {
+    name: "Massachusetts Institute of Technology",
+    logo: "https://cdn.freelogovectors.net/wp-content/uploads/2019/02/IIT-bombay-Indian-Institute-of-Technology-Bombay.png",
+  },
+  {
+    name: "Harvard University",
+    logo: "https://cdn.freelogovectors.net/wp-content/uploads/2019/02/IIT-bombay-Indian-Institute-of-Technology-Bombay.png",
+  },
+  {
+    name: "University of Oxford",
+    logo: "https://cdn.freelogovectors.net/wp-content/uploads/2019/02/IIT-bombay-Indian-Institute-of-Technology-Bombay.png",
+  },
+  {
+    name: "University of Cambridge",
+    logo: "https://cdn.freelogovectors.net/wp-content/uploads/2019/02/IIT-bombay-Indian-Institute-of-Technology-Bombay.png",
+  },
+  {
+    name: "California Institute of Technology",
+    logo: "https://cdn.freelogovectors.net/wp-content/uploads/2019/02/IIT-bombay-Indian-Institute-of-Technology-Bombay.png",
+  },
+  {
+    name: "University of Chicago",
+    logo: "https://cdn.freelogovectors.net/wp-content/uploads/2019/02/IIT-bombay-Indian-Institute-of-Technology-Bombay.png",
+  },
+  {
+    name: "Princeton University",
+    logo: "https://cdn.freelogovectors.net/wp-content/uploads/2019/02/IIT-bombay-Indian-Institute-of-Technology-Bombay.png",
+  },
+  {
+    name: "Yale University",
+    logo: "https://cdn.freelogovectors.net/wp-content/uploads/2019/02/IIT-bombay-Indian-Institute-of-Technology-Bombay.png",
+  },
+  {
+    name: "Columbia University",
+    logo: "https://cdn.freelogovectors.net/wp-content/uploads/2019/02/IIT-bombay-Indian-Institute-of-Technology-Bombay.png",
+  },
 ];
 
 const profiles = [
@@ -38,12 +76,12 @@ const profiles = [
   { name: "Michael Simbal", company: "Denva Corp" },
 ];
 
-export default function CollegeDashboard() {
+export default function CompanyDashBoard() {
   const [showMore, setShowMore] = useState(false);
 
   return (
     <div className="h-screen w-screen flex flex-col overflow-hidden bg-white">
-      <CollegeNavBar menuItems={NavBarMenu}></CollegeNavBar>
+      <CompanyNavBar menuItems={NavBarMenu}></CompanyNavBar>
       {/* Welcome Banner */}
       <div className="py-20 flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 z-10">
         <section className="bg-linear-to-t from-purple-400 to-indigo-500 text-white  rounded-xl mx-4 mt-6 flex flex-col md:flex-row justify-between items-center">
@@ -70,19 +108,20 @@ export default function CollegeDashboard() {
         <section className="mt-6 px-10">
           <h2 className="text-xl font-semibold text-black">Company Coming</h2>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mt-4">
-            {jobCompanies
-              .slice(0, showMore ? jobCompanies.length : 5)
+            {colleges
+              .slice(0, showMore ? colleges.length : 5)
               .map((company, index) => (
                 <div
                   key={index}
-                  className="p-4 bg-white drop-shadow-md shadow rounded-lg flex flex-col items-center"
+                  className="p-4 bg-linear-to-t from-purple-100 to-gray-200 drop-shadow-md shadow rounded-lg flex flex-col items-center"
                 >
                   <img
                     src={company.logo}
                     alt={company.name}
                     className="h-20 w-20 mb-2"
                   />
-                  <p>{company.name}</p>
+                  <div className="border h-1 w-20 bg-black"></div>
+                  <p className="text-gray-800">{company.name}</p>
                 </div>
               ))}
           </div>
@@ -97,15 +136,14 @@ export default function CollegeDashboard() {
         <div className="my-6 border-b border-gray-300"></div>
 
         {/* Completed Courses */}
-        <section className="mt-6 px-4">
-          <h2 className="text-xl font-semibold">Students Placed</h2>
+        <section className="mt-6 px-10">
+          <h2 className="text-xl font-semibold">On Campus Hiring</h2>
           <div className="items-center grid grid-cols-2  md:grid-cols-6 mt-4 ">
             {profiles.map((profile, index) => (
-              <ProfileCard
+              <CompanyProfileCard
                 key={index}
                 name={profile.name}
-                rollnum="22BCS015"
-                company={profile.company}
+                college={profile.company}
                 date="Arpil 20, 2022"
               />
             ))}
