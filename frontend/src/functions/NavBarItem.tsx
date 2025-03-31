@@ -11,19 +11,30 @@ export type MenuItem = {
 
 type NavbarProps = {
   menuItems: MenuItem[];
+  login: string;
+  signup: string;
 };
 
-function NavBarItem({ menuItems }: NavbarProps) {
+function NavBarItem({ menuItems, login, signup }: NavbarProps) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [profilePic, setProfilePic] = useState<string | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false); // Mobile menu toggle
 
   useEffect(() => {
-    const user = localStorage.getItem("user");
-    if (user) {
-      setIsAuthenticated(true);
-      setProfilePic("/path-to-user-image.jpg"); // Replace with actual user profile image
-    }
+    const checkAuth = () => {
+      const user = localStorage.getItem("user");
+      if (user) {
+        setIsAuthenticated(true);
+        setProfilePic("/path-to-user-image.jpg"); // Replace with actual user profile image
+      } else {
+        setIsAuthenticated(false);
+        setProfilePic(null);
+      }
+    };
+
+    checkAuth();
+    window.addEventListener("storage", checkAuth); // Update on localStorage changes
+    return () => window.removeEventListener("storage", checkAuth);
   }, []);
 
   return (
@@ -59,13 +70,13 @@ function NavBarItem({ menuItems }: NavbarProps) {
           ) : (
             <>
               <Link
-                to="/student/login"
+                to={login}
                 className="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-100 transition"
               >
                 Login
               </Link>
               <Link
-                to="/student/signup"
+                to={signup}
                 className="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-100 transition"
               >
                 Sign Up
@@ -74,7 +85,7 @@ function NavBarItem({ menuItems }: NavbarProps) {
           )}
         </div>
 
-        {/* Mobile Menu Button (Black Hamburger) */}
+        {/* Mobile Menu Button */}
         <button
           className="md:hidden p-2 text-black"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -115,14 +126,14 @@ function NavBarItem({ menuItems }: NavbarProps) {
             ) : (
               <>
                 <Link
-                  to="/login"
+                  to={login}
                   className="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-100 transition"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Login
                 </Link>
                 <Link
-                  to="/signup"
+                  to={signup}
                   className="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-100 transition"
                   onClick={() => setIsMenuOpen(false)}
                 >

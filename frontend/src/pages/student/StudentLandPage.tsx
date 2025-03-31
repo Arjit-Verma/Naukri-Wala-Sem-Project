@@ -2,6 +2,7 @@ import NavBarItem, { MenuItem } from "../../functions/NavBarItem";
 import HeroSection from "../../components/HeroSection";
 import FooterSection from "../../components/FooterSection";
 import StudentHS from "../../components/student/StudentHS";
+import { LogIn } from "lucide-react";
 
 const NavBarMenu: MenuItem[] = [
   { id: 0, title: "Info", link: "/" },
@@ -14,9 +15,13 @@ const NavBarMenu: MenuItem[] = [
 
 function StudentLandPage() {
   return (
-    <div id="/Home" className="h-screen w-screen flex flex-col overflow-hidden">
+    <div className="h-screen w-screen flex flex-col overflow-hidden">
       {/* Navigation Bar */}
-      <NavBarItem menuItems={NavBarMenu} />
+      <NavBarItem
+        menuItems={NavBarMenu}
+        login={"/student/login"}
+        signup="/student/signup"
+      />
       {/* Scrollable Content */}
       <div className="relative flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 z-10">
         {/* Hero Section with Aanimation */}

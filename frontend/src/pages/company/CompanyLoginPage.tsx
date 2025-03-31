@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import loginIllustration from "../../assets/office.jpg";
 
@@ -7,12 +7,22 @@ import loginIllustration from "../../assets/office.jpg";
 //Edited by: Arjit Verma 22bcs015
 
 function CompanyLoginPage() {
+  const navigate = useNavigate();
+
+  const handleSubmit = (event: { preventDefault: () => void }) => {
+    event.preventDefault();
+    // Add your sign-up logic here
+    // For example, you can make an API call to register the user
+
+    // If sign-up is successful, navigate to the dashboard
+    navigate("/company/dashboard");
+  };
   return (
     <div className="fixed w-full bg-white pt-4 pl-4 sm:pt-8 sm:pl-8">
       {/* Back Button Link */}
       <div className="fixed sm:p-4">
         <Link
-          to="/student"
+          to="/company"
           className="mb-4 text-black flex items-center space-x-2"
         >
           <ArrowLeft size={35} className="text-black" />
@@ -35,7 +45,7 @@ function CompanyLoginPage() {
               </div>
 
               <div className="mt-6 sm:mx-auto sm:w-full sm:max-w-sm">
-                <form action="#" method="POST" className="space-y-5">
+                <form onSubmit={handleSubmit} className="space-y-5">
                   {/* Email */}
                   <div>
                     <label

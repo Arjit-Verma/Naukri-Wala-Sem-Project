@@ -16,7 +16,11 @@ function CompanyLandPage() {
   return (
     <div id="/Home" className="h-screen w-screen flex flex-col overflow-hidden">
       {/* Navigation Bar */}
-      <NavBarItem menuItems={NavBarMenu} />
+      <NavBarItem
+        menuItems={NavBarMenu}
+        login="/company/login"
+        signup="/company/signp"
+      />
       {/* Scrollable Content */}
       <div className="relative flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 z-10">
         {/* Hero Section with Aanimation */}
