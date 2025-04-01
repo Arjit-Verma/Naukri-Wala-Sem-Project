@@ -1,67 +1,29 @@
-// server.js
-const express = require("express");
-const cors = require("cors");
+import express from "express";
+import dotenv from "dotenv";
+import cors from "cors";
+import cookieParser from "cookie-parser";
+import mongoose from "mongoose";
 
+dotenv.config();
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors());
+app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 app.use(express.json());
+app.use(cookieParser());
 
-// Mock data matching your chart
-const jobStatisticsData = [
-  {
-    date: "05 Nov 2022",
-    notPlaced: 10,
-    processing: 20,
-    interview: 30,
-    placed: 40,
-  },
-  {
-    date: "05 Nov 2022",
-    notPlaced: 15,
-    processing: 25,
-    interview: 35,
-    placed: 25,
-  },
-  {
-    date: "04 Nov 2022",
-    notPlaced: 20,
-    processing: 30,
-    interview: 25,
-    placed: 25,
-  },
-  {
-    date: "03 Nov 2022",
-    notPlaced: 25,
-    processing: 25,
-    interview: 30,
-    placed: 20,
-  },
-  {
-    date: "02 Nov 2022",
-    notPlaced: 30,
-    processing: 20,
-    interview: 25,
-    placed: 25,
-  },
-];
+// Database Connection
+mongoose
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("MongoDB Connected"))
+  .catch((err) => console.log(err));
 
-// API endpoint
-app.get("/api/job-statistics", (req, res) => {
-  try {
-    // Simulate slight delay for realism
-    setTimeout(() => {
-      res.json(jobStatisticsData);
-    }, 500);
-  } catch (error) {
-    console.error("Error fetching job statistics:", error);
-    res.status(500).json({ error: "Internal server error" });
-  }
-});
+// Routes
+import authRoutes from "./routes/authRoutes.js";
+app.use("/api/auth", authRoutes);
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

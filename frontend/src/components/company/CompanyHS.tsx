@@ -1,4 +1,4 @@
-import logo from "../../assets/heroImage.png";
+import logo from "../../assets/companyhero.png";
 
 import { ArrowRight } from "lucide-react";
 

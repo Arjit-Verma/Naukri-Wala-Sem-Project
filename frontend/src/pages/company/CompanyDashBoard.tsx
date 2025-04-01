@@ -3,6 +3,7 @@ import bag from "../../assets/bag.png";
 import student from "../../assets/cstudent.png";
 import { useState } from "react";
 import { MenuItem2 } from "../../types";
+import studentimage from "../../assets/digant.jpg";
 
 import { CompanyProfileCard } from "../../components/company/CompanyProfileCard";
 import CompanyNavBar from "../../components/company/CompanyNavBar";
@@ -23,57 +24,126 @@ interface College {
 
 const colleges: College[] = [
   {
-    name: "Stanford University",
+    name: "IIT Bombay",
     logo: "https://cdn.freelogovectors.net/wp-content/uploads/2019/02/IIT-bombay-Indian-Institute-of-Technology-Bombay.png",
   },
   {
-    name: "Massachusetts Institute of Technology",
+    name: "IIIT Dharwad",
+    logo: "https://upload.wikimedia.org/wikipedia/en/9/95/Indian_Institute_of_Information_Technology%2C_Dharwad_Logo.svg",
+  },
+  {
+    name: "IIT Bombay",
     logo: "https://cdn.freelogovectors.net/wp-content/uploads/2019/02/IIT-bombay-Indian-Institute-of-Technology-Bombay.png",
   },
   {
-    name: "Harvard University",
+    name: "IIIT Dharwad",
+    logo: "https://upload.wikimedia.org/wikipedia/en/9/95/Indian_Institute_of_Information_Technology%2C_Dharwad_Logo.svg",
+  },
+  {
+    name: "IIT Bombay",
     logo: "https://cdn.freelogovectors.net/wp-content/uploads/2019/02/IIT-bombay-Indian-Institute-of-Technology-Bombay.png",
   },
   {
-    name: "University of Oxford",
+    name: "IIIT Dharwad",
+    logo: "https://upload.wikimedia.org/wikipedia/en/9/95/Indian_Institute_of_Information_Technology%2C_Dharwad_Logo.svg",
+  },
+  {
+    name: "IIT Bombay",
     logo: "https://cdn.freelogovectors.net/wp-content/uploads/2019/02/IIT-bombay-Indian-Institute-of-Technology-Bombay.png",
   },
   {
-    name: "University of Cambridge",
+    name: "IIIT Dharwad",
+    logo: "https://upload.wikimedia.org/wikipedia/en/9/95/Indian_Institute_of_Information_Technology%2C_Dharwad_Logo.svg",
+  },
+  {
+    name: "IIT Bombay",
     logo: "https://cdn.freelogovectors.net/wp-content/uploads/2019/02/IIT-bombay-Indian-Institute-of-Technology-Bombay.png",
   },
   {
-    name: "California Institute of Technology",
+    name: "IIIT Dharwad",
+    logo: "https://upload.wikimedia.org/wikipedia/en/9/95/Indian_Institute_of_Information_Technology%2C_Dharwad_Logo.svg",
+  },
+  {
+    name: "IIT Bombay",
     logo: "https://cdn.freelogovectors.net/wp-content/uploads/2019/02/IIT-bombay-Indian-Institute-of-Technology-Bombay.png",
   },
   {
-    name: "University of Chicago",
+    name: "IIIT Dharwad",
+    logo: "https://upload.wikimedia.org/wikipedia/en/9/95/Indian_Institute_of_Information_Technology%2C_Dharwad_Logo.svg",
+  },
+  {
+    name: "IIT Bombay",
     logo: "https://cdn.freelogovectors.net/wp-content/uploads/2019/02/IIT-bombay-Indian-Institute-of-Technology-Bombay.png",
   },
   {
-    name: "Princeton University",
+    name: "IIIT Dharwad",
+    logo: "https://upload.wikimedia.org/wikipedia/en/9/95/Indian_Institute_of_Information_Technology%2C_Dharwad_Logo.svg",
+  },
+  {
+    name: "IIT Bombay",
     logo: "https://cdn.freelogovectors.net/wp-content/uploads/2019/02/IIT-bombay-Indian-Institute-of-Technology-Bombay.png",
   },
   {
-    name: "Yale University",
-    logo: "https://cdn.freelogovectors.net/wp-content/uploads/2019/02/IIT-bombay-Indian-Institute-of-Technology-Bombay.png",
-  },
-  {
-    name: "Columbia University",
-    logo: "https://cdn.freelogovectors.net/wp-content/uploads/2019/02/IIT-bombay-Indian-Institute-of-Technology-Bombay.png",
+    name: "IIIT Dharwad",
+    logo: "https://upload.wikimedia.org/wikipedia/en/9/95/Indian_Institute_of_Information_Technology%2C_Dharwad_Logo.svg",
   },
 ];
 
 const profiles = [
-  { name: "John Doe", company: "Google" },
-  { name: "Alice Johnson", company: "Microsoft" },
-  { name: "Michael Simbal", company: "Denva Corp" },
-  { name: "Alice Johnson", company: "Microsoft" },
-  { name: "Michael Simbal", company: "Denva Corp" },
-  { name: "Alice Johnson", company: "Microsoft" },
-  { name: "Michael Simbal", company: "Denva Corp" },
-  { name: "Alice Johnson", company: "Microsoft" },
-  { name: "Michael Simbal", company: "Denva Corp" },
+  {
+    name: "John Doe",
+    position: "Software Engineer",
+    imageUrl: student,
+    date: "Arpil 1 2025",
+  },
+  {
+    name: "Alice Johnson",
+    position: "Product Manager",
+    imageUrl: studentimage,
+    date: "Arpil 5 2025",
+  },
+  {
+    name: "Michael Simbal",
+    position: "Data Scientist",
+    imageUrl: student,
+    date: "Arpil 10 2025",
+  },
+  {
+    name: "Alice Johnson",
+    position: "Product Manager",
+    imageUrl: studentimage,
+    date: "May 10 2025",
+  },
+  {
+    name: "Michael Simbal",
+    position: "Data Scientist",
+    imageUrl: student,
+    date: "May 1 2025",
+  },
+  {
+    name: "Alice Johnson",
+    position: "Product Manager",
+    imageUrl: studentimage,
+    date: "May 10 2025",
+  },
+  {
+    name: "Michael Simbal",
+    position: "Data Scientist",
+    imageUrl: student,
+    date: "May 10 2025",
+  },
+  {
+    name: "Alice Johnson",
+    position: "Product Manager",
+    imageUrl: studentimage,
+    date: "May 10 2025",
+  },
+  {
+    name: "Michael Simbal",
+    position: "Data Scientist",
+    imageUrl: student,
+    date: "May 11 2025",
+  },
 ];
 
 export default function CompanyDashBoard() {
@@ -87,7 +157,7 @@ export default function CompanyDashBoard() {
         <section className="bg-linear-to-t from-purple-400 to-indigo-500 text-white  rounded-xl mx-4 mt-6 flex flex-col md:flex-row justify-between items-center">
           <div className="p-6">
             <h3 className="text-sm py-4">1st April </h3>
-            <h1 className="text-3xl font-bold">Welcome back, CGC!</h1>
+            <h1 className="text-3xl font-bold">Welcome back, Company!</h1>
             <p className="text-gray-200">
               Always stay updated in your this portal
             </p>
@@ -106,7 +176,9 @@ export default function CompanyDashBoard() {
 
         {/* Job Applications */}
         <section className="mt-6 px-10">
-          <h2 className="text-xl font-semibold text-black">Company Coming</h2>
+          <h2 className="text-xl font-semibold text-black">
+            Colleges To Recruit
+          </h2>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mt-4">
             {colleges
               .slice(0, showMore ? colleges.length : 5)
@@ -138,13 +210,14 @@ export default function CompanyDashBoard() {
         {/* Completed Courses */}
         <section className="mt-6 px-10">
           <h2 className="text-xl font-semibold">On Campus Hiring</h2>
-          <div className="items-center grid grid-cols-2  md:grid-cols-6 mt-4 ">
+          <div className="items-center grid grid-cols-2 lg:grid-cols-6 md:grid-cols-4 mt-4 ">
             {profiles.map((profile, index) => (
               <CompanyProfileCard
                 key={index}
                 name={profile.name}
-                college={profile.company}
-                date="Arpil 20, 2022"
+                image={profile.imageUrl}
+                position={profile.position}
+                date={profile.date}
               />
             ))}
           </div>
