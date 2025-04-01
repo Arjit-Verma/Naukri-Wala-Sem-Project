@@ -19,8 +19,9 @@ function FooterSection() {
               />
             </a>
             <p className="mt-4 text-sm text-gray-500 dark:text-gray-400">
-              123 Main Street, City, Country <br />
-              Email: info@company.com <br />
+              Ittigati Road Sattur, Dharwad, India
+              <br />
+              Email: naukriwala@company.com <br />
               Phone: +123 456 7890
             </p>
           </div>
@@ -79,7 +80,7 @@ function FooterSection() {
         <p className="text-center text-sm text-gray-500 dark:text-gray-400">
           © {new Date().getFullYear()}{" "}
           <a href="#" className="hover:underline">
-            Your Company™
+            NaukriWala™
           </a>
           . All Rights Reserved.
         </p>

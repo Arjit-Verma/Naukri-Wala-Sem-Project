@@ -35,7 +35,7 @@ export default function ProfilePage() {
         gender: "Male",
         college: "IIIT Dharwad",
         skills: ["React", "Node.js", "Python"],
-        gpa: 9.85,
+        gpa: 8.55,
         projects: [
           { title: "Project 1", description: "Project Description" },
           { title: "Project 2", description: "Project Description" },

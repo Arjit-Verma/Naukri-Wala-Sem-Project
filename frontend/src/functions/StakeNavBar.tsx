@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react"; // Icons for menu and close
 import clogo from "../assets/companylogo.png";
-
 import ProfileTemplate from "./ProfileProps";
 import student from "../assets/cstudent.png";
 import { MenuItem2 } from "../types";
@@ -12,9 +11,10 @@ type NavbarProps = {
 };
 
 function StakeNavBar({ menuItems }: NavbarProps) {
+  const location = useLocation(); // Get current route
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [profilePic, setProfilePic] = useState<string | null>(null);
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // Mobile menu toggle
 
   useEffect(() => {
     const user = localStorage.getItem("user");
@@ -24,6 +24,11 @@ function StakeNavBar({ menuItems }: NavbarProps) {
     }
   }, []);
 
+  // Determine the active menu item
+  const activeItem =
+    menuItems.find((item) => item.link === location.pathname)?.id ||
+    menuItems[0]?.id;
+
   return (
     <nav className="fixed top-0 left-0 w-full py-3 backdrop-blur-sm shadow-lg border z-20 bg-white/30">
       <div className="flex justify-between items-center px-8">
@@ -32,13 +37,17 @@ function StakeNavBar({ menuItems }: NavbarProps) {
           <img src={clogo} alt="Company Logo" className="h-12" />
         </div>
 
-        {/* Desktop Menu (Hidden on Small Screens) */}
+        {/* Desktop Menu */}
         <ul className="hidden md:flex space-x-6">
           {menuItems.map((item) => (
             <li key={item.id}>
               <Link
                 to={item.link}
-                className="text-gray-800 hover:text-black transition-colors"
+                className={`px-4 py-2 rounded-lg transition-colors ${
+                  activeItem === item.id
+                    ? "bg-blue-100 border border-blue-600 text-blue-600"
+                    : "text-gray-800 hover:text-black"
+                }`}
               >
                 {item.title}
               </Link>
@@ -46,17 +55,17 @@ function StakeNavBar({ menuItems }: NavbarProps) {
           ))}
         </ul>
 
-        {/* Login / Sign Up or Profile */}
+        {/* Profile */}
         <div className="hidden md:flex items-center space-x-4">
           <ProfileTemplate
             name={"Arjit Verma"}
             designation={"3rd Year"}
             avatarUrl={student}
             link="/student/profile"
-          ></ProfileTemplate>
+          />
         </div>
 
-        {/* Mobile Menu Button (Black Hamburger) */}
+        {/* Mobile Menu Button */}
         <button
           className="md:hidden p-2 text-black"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -77,7 +86,11 @@ function StakeNavBar({ menuItems }: NavbarProps) {
               <li key={item.id}>
                 <Link
                   to={item.link}
-                  className="text-gray-800 hover:text-black transition-colors"
+                  className={`px-4 py-2 rounded-lg transition-colors ${
+                    activeItem === item.id
+                      ? "bg-blue-100 border border-blue-600 text-blue-600"
+                      : "text-gray-800 hover:text-black"
+                  }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.title}
@@ -86,7 +99,7 @@ function StakeNavBar({ menuItems }: NavbarProps) {
             ))}
           </ul>
 
-          {/* Login / Sign Up or Profile in Mobile Menu */}
+          {/* Profile in Mobile Menu */}
           <div className="flex flex-col items-center space-y-4 pb-4">
             <img
               src={profilePic || "/default-profile.png"}

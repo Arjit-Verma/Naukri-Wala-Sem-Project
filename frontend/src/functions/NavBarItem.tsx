@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Menu, X } from "lucide-react"; // Icons for menu and close
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom"; // Import useLocation
+import { Menu, X } from "lucide-react";
 import clogo from "../assets/companylogo.png";
 
 export type MenuItem = {
@@ -16,9 +16,15 @@ type NavbarProps = {
 };
 
 function NavBarItem({ menuItems, login, signup }: NavbarProps) {
+  const location = useLocation(); // Get current route
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [profilePic, setProfilePic] = useState<string | null>(null);
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // Mobile menu toggle
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // Determine which item is active based on the current URL
+  const activeItem =
+    menuItems.find((item) => item.link === location.pathname)?.id ||
+    menuItems[0]?.id;
 
   useEffect(() => {
     const checkAuth = () => {
@@ -33,7 +39,7 @@ function NavBarItem({ menuItems, login, signup }: NavbarProps) {
     };
 
     checkAuth();
-    window.addEventListener("storage", checkAuth); // Update on localStorage changes
+    window.addEventListener("storage", checkAuth);
     return () => window.removeEventListener("storage", checkAuth);
   }, []);
 
@@ -45,13 +51,17 @@ function NavBarItem({ menuItems, login, signup }: NavbarProps) {
           <img src={clogo} alt="Company Logo" className="h-12" />
         </div>
 
-        {/* Desktop Menu (Hidden on Small Screens) */}
+        {/* Desktop Menu */}
         <ul className="hidden md:flex space-x-6">
           {menuItems.map((item) => (
             <li key={item.id}>
               <Link
                 to={item.link}
-                className="text-gray-800 hover:text-black transition-colors"
+                className={`px-4 py-2 rounded-lg transition-colors ${
+                  activeItem === item.id
+                    ? "bg-blue-100 border border-blue-600 text-blue-600"
+                    : "text-gray-800 hover:text-black"
+                }`}
               >
                 {item.title}
               </Link>
@@ -106,8 +116,12 @@ function NavBarItem({ menuItems, login, signup }: NavbarProps) {
               <li key={item.id}>
                 <Link
                   to={item.link}
-                  className="text-gray-800 hover:text-black transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={() => setIsMenuOpen(false)} // Close menu on click
+                  className={`px-4 py-2 rounded-lg transition-colors ${
+                    activeItem === item.id
+                      ? "bg-blue-100 border border-blue-600 text-blue-600"
+                      : "text-gray-800 hover:text-black"
+                  }`}
                 >
                   {item.title}
                 </Link>

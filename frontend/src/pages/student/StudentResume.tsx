@@ -133,7 +133,11 @@ const StudentResume = () => {
                   onClick={() => handleTemplateSelect(template.id)}
                 >
                   <div className="bg-gray-100 h-48 flex items-center justify-center">
-                    <span className="text-gray-400">Template Preview</span>
+                    <img
+                      src="https://th.bing.com/th/id/OIP.hWEobj_lmMrfbXmD1VCIawHaKd?rs=1&pid=ImgDetMain"
+                      alt=""
+                      className="w-30"
+                    />
                   </div>
                   <div className="p-4">
                     <h3 className="font-medium text-gray-800">
@@ -142,7 +146,7 @@ const StudentResume = () => {
                     <button
                       className={`mt-2 w-full py-1 rounded ${
                         template.selected
-                          ? "bg-primary-500 text-white"
+                          ? "bg-primary-500 text-black"
                           : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                       }`}
                     >

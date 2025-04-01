@@ -14,7 +14,7 @@ const NavBarMenu: MenuItem2[] = [
 
 export function CollegeStats() {
   return (
-    <div className="container  mx-auto p-4 w-full h-full">
+    <div className="container mx-auto p-4 w-full h-screen overflow-y-auto">
       <CollegeNavBar menuItems={NavBarMenu}></CollegeNavBar>
       <div className="pt-15 grid grid-cols-1 md:grid-cols-3 gap-4">
         <DoughnutChart />

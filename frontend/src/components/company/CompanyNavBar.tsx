@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react"; // Icons for menu and close
 import clogo from "../../assets/companylogo.png";
 
@@ -12,6 +12,7 @@ type NavbarProps = {
 };
 
 function CompanyNavBar({ menuItems }: NavbarProps) {
+  const location = useLocation(); // Get current route
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [profilePic, setProfilePic] = useState<string | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false); // Mobile menu toggle
@@ -23,7 +24,9 @@ function CompanyNavBar({ menuItems }: NavbarProps) {
       setProfilePic("/path-to-user-image.jpg"); // Replace with actual user profile image
     }
   }, []);
-
+  const activeItem =
+    menuItems.find((item) => item.link === location.pathname)?.id ||
+    menuItems[0]?.id;
   return (
     <nav className="fixed top-0 left-0 w-full py-3 backdrop-blur-sm shadow-lg border z-20 bg-white/30">
       <div className="flex  justify-between items-center px-8">
@@ -38,7 +41,11 @@ function CompanyNavBar({ menuItems }: NavbarProps) {
             <li key={item.id}>
               <Link
                 to={item.link}
-                className="text-gray-800 hover:text-black transition-colors"
+                className={`px-4 py-2 rounded-lg transition-colors ${
+                  activeItem === item.id
+                    ? "bg-blue-100 border border-blue-600 text-blue-600"
+                    : "text-gray-800 hover:text-black"
+                }`}
               >
                 {item.title}
               </Link>
