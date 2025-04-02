@@ -1,6 +1,5 @@
 import StakeNavBar from "../../functions/StakeNavBar";
 import { useState } from "react";
-import { DEFAULT_MAX_VERSION } from "tls";
 import { MenuItem2 } from "../../types";
 
 type Template = {

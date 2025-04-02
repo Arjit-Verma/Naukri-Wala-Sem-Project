@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { PlusCircle, Upload, Edit } from "lucide-react";
+import { Upload, Edit } from "lucide-react";
 import StakeNavBar from "../../functions/StakeNavBar";
 import student from "../../assets/student.jpg";
 import { MenuItem2 } from "../../types";

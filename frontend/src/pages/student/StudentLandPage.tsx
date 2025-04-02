@@ -1,8 +1,7 @@
 import NavBarItem, { MenuItem } from "../../functions/NavBarItem";
-import HeroSection from "../../components/HeroSection";
+
 import FooterSection from "../../components/FooterSection";
 import StudentHS from "../../components/student/StudentHS";
-import { LogIn } from "lucide-react";
 
 const NavBarMenu: MenuItem[] = [
   { id: 0, title: "Info", link: "/" },
