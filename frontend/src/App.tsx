@@ -30,6 +30,9 @@ import CompanyStudentInfo from "./pages/company/CompanyStudentInfo";
 import CompanyApplication from "./pages/company/CompanyApplication";
 import StudentAts from "./pages/student/StudentAts";
 import CollegeProfile from "./pages/college/CollegeProfilePage";
+import { AboutUsPage, ServicesPage } from "./pages/AboutUs";
+import { CompanyProfileCard } from "components/company/CompanyProfileCard";
+import CompanyProfilePage from "./pages/company/CompanyProfile";
 
 function App() {
   return (
@@ -48,6 +51,9 @@ function App() {
           path="/company"
           element={<CompanyLandPage></CompanyLandPage>}
         ></Route>
+        <Route path="/aboutus" element={<AboutUsPage></AboutUsPage>}></Route>
+
+        <Route path="/services" element={<ServicesPage></ServicesPage>}></Route>
         <Route path="/student/login" element={<StudentLoginPage />}></Route>
         <Route path="/student/signup" element={<StudentSignupPage />}></Route>
         <Route path="/student/dashboard" element={<StudentDashboard />}></Route>
@@ -77,6 +83,7 @@ function App() {
         <Route path="/company/login" element={<CompanyLoginPage />}></Route>
         <Route path="/company/signup" element={<CompanySignupPage />}></Route>
         <Route path="/company/dashboard" element={<CompanyDashBoard />}></Route>
+        <Route path="/company/profile" element={<CompanyProfilePage />}></Route>
 
         <Route path="/company/stats" element={<CompanyStats />}></Route>
         <Route
