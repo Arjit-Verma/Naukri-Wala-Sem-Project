@@ -149,3 +149,4 @@ dist-ssr
 *.sln
 *.sw?
 >>>>>>> ff4aaad (first commit)
+.venv
