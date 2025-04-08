@@ -28,6 +28,7 @@ export type ProfileCardProps = {
 
 export type CompanyProfileCardProps = {
   name: string;
+  image: string;
   college: string;
   date: string;
 };

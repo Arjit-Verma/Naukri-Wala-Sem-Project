@@ -8,8 +8,8 @@ const NavBarMenu: MenuItem[] = [
   { id: 1, title: "Students", link: "/student" },
   { id: 2, title: "University", link: "/college" },
   { id: 3, title: "Company", link: "/company" },
-  { id: 4, title: "Services", link: "#" },
-  { id: 5, title: "About Us", link: "#" },
+  { id: 4, title: "Services", link: "/services" },
+  { id: 5, title: "About Us", link: "/aboutus" },
 ];
 
 function CompanyLandPage() {

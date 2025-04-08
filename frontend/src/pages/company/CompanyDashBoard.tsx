@@ -92,55 +92,55 @@ const colleges: College[] = [
 const profiles = [
   {
     name: "John Doe",
-    position: "Software Engineer",
+    college: "Software Engineer",
     imageUrl: student,
     date: "Arpil 1 2025",
   },
   {
     name: "Alice Johnson",
-    position: "Product Manager",
+    college: "Product Manager",
     imageUrl: studentimage,
     date: "Arpil 5 2025",
   },
   {
     name: "Michael Simbal",
-    position: "Data Scientist",
+    college: "Data Scientist",
     imageUrl: student,
     date: "Arpil 10 2025",
   },
   {
     name: "Alice Johnson",
-    position: "Product Manager",
+    college: "Product Manager",
     imageUrl: studentimage,
     date: "May 10 2025",
   },
   {
     name: "Michael Simbal",
-    position: "Data Scientist",
+    college: "Data Scientist",
     imageUrl: student,
     date: "May 1 2025",
   },
   {
     name: "Alice Johnson",
-    position: "Product Manager",
+    college: "Product Manager",
     imageUrl: studentimage,
     date: "May 10 2025",
   },
   {
     name: "Michael Simbal",
-    position: "Data Scientist",
+    college: "Data Scientist",
     imageUrl: student,
     date: "May 10 2025",
   },
   {
     name: "Alice Johnson",
-    position: "Product Manager",
+    college: "Product Manager",
     imageUrl: studentimage,
     date: "May 10 2025",
   },
   {
     name: "Michael Simbal",
-    position: "Data Scientist",
+    college: "Data Scientist",
     imageUrl: student,
     date: "May 11 2025",
   },
@@ -215,8 +215,8 @@ export default function CompanyDashBoard() {
               <CompanyProfileCard
                 key={index}
                 name={profile.name}
+                college={profile.college}
                 image={profile.imageUrl}
-                position={profile.position}
                 date={profile.date}
               />
             ))}
