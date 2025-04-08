@@ -150,3 +150,6 @@ dist-ssr
 *.sw?
 >>>>>>> ff4aaad (first commit)
 .venv
+__pycache__
+uploads
+paths.txt
