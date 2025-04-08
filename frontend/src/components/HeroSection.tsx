@@ -35,7 +35,7 @@ function HeroSection() {
                     Join As Student
                   </a>
                   <div className="px-6 font-semibold text-2xl">
-                    Get the Time You Deserve
+                    Shape Your Career with Confidence
                   </div>
                 </div>
 
@@ -43,13 +43,13 @@ function HeroSection() {
                   <a
                     href="/college"
                     title=""
-                    className="inline-flex items-center w-45 px-6 py-4 font-semibold text-black transition-all duration-200 bg-yellow-300 rounded-full hover:bg-yellow-400 focus:bg-yellow-400"
+                    className="inline-flex items-center w-47 px-6 py-4 font-semibold text-black transition-all duration-200 bg-yellow-300 rounded-full hover:bg-yellow-400 focus:bg-yellow-400"
                     role="button"
                   >
                     Join As University
                   </a>
                   <div className="px-6 font-semibold text-2xl">
-                    Get the System You awaits
+                    Smart Tools for Smarter Placements
                   </div>
                 </div>
                 <div className="flex items-center">
@@ -62,7 +62,7 @@ function HeroSection() {
                     Join As Company
                   </a>
                   <div className="px-6 font-semibold text-2xl">
-                    Hire People At Better Pace
+                    Hire the Best, Faster
                   </div>
                 </div>
               </div>
@@ -76,7 +76,7 @@ function HeroSection() {
       <div className="flex items-center justify-between w-full sm:px-10 lg:px-30 pb-16">
         {/* Left Text */}
         <span className="text-xl font-bold text-gray-500 sm:px-6 lg:px-8 ">
-          Heard Enough About Us, Now
+          Heard Enough About Us,
         </span>
 
         {/* Contact Text */}

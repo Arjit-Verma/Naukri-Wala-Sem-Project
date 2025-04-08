@@ -35,8 +35,8 @@ export default function StudentDashboard() {
       <div className="py-20 flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 z-10">
         <section className="bg-linear-to-t from-sky-500 to-indigo-500 text-white  rounded-xl mx-4 mt-6 flex flex-col md:flex-row justify-between items-center">
           <div className="p-6">
-            <h3 className="text-sm py-4">1st April </h3>
-            <h1 className="text-3xl font-bold">Welcome back, Arjit!</h1>
+            <h3 className="text-sm py-4">8th April </h3>
+            <h1 className="text-3xl font-bold">Welcome back, Sidhant!</h1>
             <p className="text-gray-200">
               Always stay updated in your student portal
             </p>

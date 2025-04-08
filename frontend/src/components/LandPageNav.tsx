@@ -1,33 +1,45 @@
-import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react"; // Icons for menu and close
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom"; // Import useLocation
+import { Menu, X } from "lucide-react";
 import clogo from "../assets/companylogo.png";
-import ProfileTemplate from "./ProfileProps";
-import student from "../assets/cstudent.png";
-import { MenuItem2 } from "../types";
 
-type NavbarProps = {
-  menuItems: MenuItem2[];
+export type MenuItem = {
+  id: number;
+  title: string;
+  link: string;
 };
 
-function StakeNavBar({ menuItems }: NavbarProps) {
+type NavbarProps = {
+  menuItems: MenuItem[];
+};
+
+function LandPageNavBar({ menuItems }: NavbarProps) {
   const location = useLocation(); // Get current route
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [profilePic, setProfilePic] = useState<string | null>(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const user = localStorage.getItem("user");
-    if (user) {
-      setIsAuthenticated(true);
-      setProfilePic("/path-to-user-image.jpg"); // Replace with actual user profile image
-    }
-  }, []);
-
-  // Determine the active menu item
+  // Determine which item is active based on the current URL
   const activeItem =
     menuItems.find((item) => item.link === location.pathname)?.id ||
     menuItems[0]?.id;
+
+  useEffect(() => {
+    const checkAuth = () => {
+      const user = localStorage.getItem("user");
+      if (user) {
+        setIsAuthenticated(true);
+        setProfilePic("/path-to-user-image.jpg"); // Replace with actual user profile image
+      } else {
+        setIsAuthenticated(false);
+        setProfilePic(null);
+      }
+    };
+
+    checkAuth();
+    window.addEventListener("storage", checkAuth);
+    return () => window.removeEventListener("storage", checkAuth);
+  }, []);
 
   return (
     <nav className="fixed top-0 left-0 w-full py-3 backdrop-blur-sm shadow-lg border z-20 bg-white/30">
@@ -55,14 +67,17 @@ function StakeNavBar({ menuItems }: NavbarProps) {
           ))}
         </ul>
 
-        {/* Profile */}
+        {/* Login / Sign Up or Profile */}
         <div className="hidden md:flex items-center space-x-4">
-          <ProfileTemplate
-            name={"Sidhant Singh"}
-            designation={"3rd Year"}
-            avatarUrl={student}
-            link="/student/profile"
-          />
+          {isAuthenticated ? (
+            <img
+              src={profilePic || "/default-profile.png"}
+              alt="Profile"
+              className="h-10 w-10 rounded-full border cursor-pointer"
+            />
+          ) : (
+            <></>
+          )}
         </div>
 
         {/* Mobile Menu Button */}
@@ -86,12 +101,12 @@ function StakeNavBar({ menuItems }: NavbarProps) {
               <li key={item.id}>
                 <Link
                   to={item.link}
+                  onClick={() => setIsMenuOpen(false)} // Close menu on click
                   className={`px-4 py-2 rounded-lg transition-colors ${
                     activeItem === item.id
                       ? "bg-blue-100 border border-blue-600 text-blue-600"
                       : "text-gray-800 hover:text-black"
                   }`}
-                  onClick={() => setIsMenuOpen(false)}
                 >
                   {item.title}
                 </Link>
@@ -99,13 +114,17 @@ function StakeNavBar({ menuItems }: NavbarProps) {
             ))}
           </ul>
 
-          {/* Profile in Mobile Menu */}
+          {/* Login / Sign Up or Profile in Mobile Menu */}
           <div className="flex flex-col items-center space-y-4 pb-4">
-            <img
-              src={profilePic || "/default-profile.png"}
-              alt="Profile"
-              className="h-10 w-10 rounded-full border cursor-pointer"
-            />
+            {isAuthenticated ? (
+              <img
+                src={profilePic || "/default-profile.png"}
+                alt="Profile"
+                className="h-10 w-10 rounded-full border cursor-pointer"
+              />
+            ) : (
+              <></>
+            )}
           </div>
         </div>
       )}
@@ -113,4 +132,4 @@ function StakeNavBar({ menuItems }: NavbarProps) {
   );
 }
 
-export default StakeNavBar;
+export default LandPageNavBar;

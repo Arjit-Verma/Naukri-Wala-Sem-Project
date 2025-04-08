@@ -38,74 +38,74 @@ const NavBarMenu: MenuItem2[] = [
 const data: Application[] = [
   {
     id: "1",
-    company: "Google",
-    logo: "/logos/google.png",
-    position: "Software Engineer",
-    date: "2024-03-15",
+    company: "Adobe",
+    logo: "https://cdn-icons-png.flaticon.com/512/888/888835.png",
+    position: "Frontend Developer",
+    date: "2024-03-12",
     status: "Accepted",
   },
   {
     id: "2",
-    company: "Amazon",
-    logo: "/logos/amazon.png",
-    position: "Data Scientist",
-    date: "2024-02-10",
+    company: "Salesforce",
+    logo: "https://logos-world.net/wp-content/uploads/2020/10/Salesforce-Emblem.png",
+    position: "Backend Developer",
+    date: "2024-02-28",
     status: "In Process",
   },
   {
     id: "3",
-    company: "Microsoft",
-    logo: "/logos/microsoft.png",
-    position: "AI Researcher",
-    date: "2024-01-22",
+    company: "Oracle",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg",
+    position: "Cloud Engineer",
+    date: "2024-01-15",
     status: "Rejected",
   },
   {
     id: "4",
-    company: "Google",
-    logo: "/logos/google.png",
-    position: "Software Engineer",
-    date: "2024-03-15",
+    company: "Spotify",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg",
+    position: "Audio ML Engineer",
+    date: "2024-03-20",
     status: "Accepted",
   },
   {
     id: "5",
-    company: "Amazon",
-    logo: "/logos/amazon.png",
-    position: "Data Scientist",
-    date: "2024-02-10",
+    company: "Airbnb",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/6/69/Airbnb_Logo_Bélo.svg",
+    position: "Full Stack Developer",
+    date: "2024-02-19",
     status: "In Process",
   },
   {
     id: "6",
-    company: "Microsoft",
-    logo: "/logos/microsoft.png",
-    position: "AI Researcher",
-    date: "2024-01-22",
+    company: "Stripe",
+    logo: "https://s3-eu-west-1.amazonaws.com/tpd/logos/50489e6800006400051ae0d6/0x0.png  ",
+    position: "Payment Systems Engineer",
+    date: "2024-01-30",
     status: "Rejected",
   },
   {
     id: "7",
-    company: "Google",
-    logo: "/logos/google.png",
-    position: "Software Engineer",
-    date: "2024-03-15",
+    company: "Shopify",
+    logo: "https://companieslogo.com/img/orig/SHOP-020ea41a.png?t=1633439432",
+    position: "DevOps Engineer",
+    date: "2024-03-10",
     status: "Accepted",
   },
   {
     id: "8",
-    company: "Amazon",
-    logo: "/logos/amazon.png",
-    position: "Data Scientist",
-    date: "2024-02-10",
+    company: "Zoom",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Zoom_Communications_Logo.svg",
+    position: "Video Infrastructure Engineer",
+    date: "2024-02-05",
     status: "In Process",
   },
   {
     id: "9",
-    company: "Microsoft",
-    logo: "/logos/microsoft.png",
-    position: "AI Researcher",
-    date: "2024-01-22",
+    company: "Atlassian",
+    logo: "https://logosandtypes.com/wp-content/uploads/2020/07/Atlassian.png",
+    position: "Platform Engineer",
+    date: "2024-01-12",
     status: "Rejected",
   },
 ];
@@ -187,18 +187,6 @@ export function StudentCompanyList() {
 
   return (
     <div className="w-full h-screen">
-      {/* <div className="flex items-center py-4">
-        <Input
-          placeholder="Filter by position..."
-          value={
-            (table.getColumn("position")?.getFilterValue() as string) ?? ""
-          }
-          onChange={(event) =>
-            table.getColumn("position")?.setFilterValue(event.target.value)
-          }
-          className="max-w-sm"
-        />
-      </div> */}
       <StakeNavBar menuItems={NavBarMenu}></StakeNavBar>
       <div className="pt-30 mt-2 mx-4 rounded-md border ">
         <Table>

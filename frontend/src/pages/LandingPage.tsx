@@ -1,6 +1,7 @@
 import NavBarItem, { MenuItem } from "../functions/NavBarItem";
 import HeroSection from "../components/HeroSection";
 import FooterSection from "../components/FooterSection";
+import LandPageNavBar from "../components/LandPageNav";
 
 const NavBarMenu: MenuItem[] = [
   { id: 0, title: "Info", link: "/" },
@@ -15,7 +16,7 @@ function LandingPage() {
   return (
     <div id="/Home" className="h-screen w-screen flex flex-col overflow-hidden">
       {/* Navigation Bar */}
-      <NavBarItem menuItems={NavBarMenu} />
+      <LandPageNavBar menuItems={NavBarMenu}></LandPageNavBar>
       {/* Scrollable Content */}
       <div className="relative flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 z-10">
         {/* Hero Section with Animation */}
