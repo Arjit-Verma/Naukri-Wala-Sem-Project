@@ -21,6 +21,7 @@ export type MenuItem2 = {
 export type ProfileCardProps = {
   name: string;
   rollnum: string;
+  img: string;
   company: string;
   date: string;
 };

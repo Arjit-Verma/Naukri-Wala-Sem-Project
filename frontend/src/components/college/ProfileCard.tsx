@@ -3,6 +3,7 @@ import { ProfileCardProps } from "../../types";
 export function ProfileCard({
   name,
   rollnum,
+  img,
   company,
   date,
 }: ProfileCardProps) {
@@ -12,7 +13,7 @@ export function ProfileCard({
         <div className="relative mx-auto w-30 h-30 rounded-full mt-4 ">
           <img
             className="mx-auto h-full w-full rounded-full"
-            src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80"
+            src={img}
             alt=""
           />
         </div>
