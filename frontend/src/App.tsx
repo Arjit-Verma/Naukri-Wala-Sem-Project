@@ -29,6 +29,7 @@ import CompanyJobUpdate from "./pages/company/CompanyJobUpdate";
 import CompanyStudentInfo from "./pages/company/CompanyStudentInfo";
 import CompanyApplication from "./pages/company/CompanyApplication";
 import StudentAts from "./pages/student/StudentAts";
+import CollegeProfile from "./pages/college/CollegeProfilePage";
 
 function App() {
   return (
@@ -71,6 +72,8 @@ function App() {
           element={<CollegeStudentInfo />}
         ></Route>
         <Route path="/college/stats" element={<CollegeStats />}></Route>
+        <Route path="/college/profile" element={<CollegeProfile />}></Route>
+
         <Route path="/company/login" element={<CompanyLoginPage />}></Route>
         <Route path="/company/signup" element={<CompanySignupPage />}></Route>
         <Route path="/company/dashboard" element={<CompanyDashBoard />}></Route>

@@ -10,78 +10,78 @@ interface Student {
 
 const students: Student[] = [
   {
-    name: "Alice Johnson",
+    name: "Arjun Mehta",
     rollNumber: "22bcs015",
     status: "Placed",
     imageUrl: studentpic,
   },
   {
-    name: "Bob Smith",
+    name: "Priya Sharma",
     rollNumber: "22bcs016",
     status: "Not Placed",
     imageUrl: studentpic,
   },
   {
-    name: "Carol White",
+    name: "Rohan Patel",
     rollNumber: "22bcs017",
     status: "Interview",
     imageUrl: studentpic,
   },
   {
-    name: "David Brown",
+    name: "Sneha Iyer",
     rollNumber: "22bcs018",
     status: "Processing",
     imageUrl: studentpic,
   },
   {
-    name: "Eva Green",
+    name: "Kunal Singh",
     rollNumber: "22bcs019",
     status: "Placed",
     imageUrl: studentpic,
   },
   {
-    name: "Frank Miller",
+    name: "Aditi Verma",
     rollNumber: "22bcs020",
     status: "Not Placed",
     imageUrl: studentpic,
   },
   {
-    name: "Grace Lee",
+    name: "Manav Desai",
     rollNumber: "22bcs021",
     status: "Interview",
     imageUrl: studentpic,
   },
   {
-    name: "Henry Clark",
+    name: "Isha Nair",
     rollNumber: "22bcs022",
     status: "Processing",
     imageUrl: studentpic,
   },
   {
-    name: "Ivy Davis",
+    name: "Devansh Reddy",
     rollNumber: "22bcs023",
     status: "Placed",
     imageUrl: studentpic,
   },
   {
-    name: "Jack Turner",
+    name: "Neha Kapoor",
     rollNumber: "22bcs024",
     status: "Not Placed",
     imageUrl: studentpic,
   },
   {
-    name: "Karen Wilson",
+    name: "Siddharth Jain",
     rollNumber: "22bcs025",
     status: "Interview",
     imageUrl: studentpic,
   },
   {
-    name: "Leo Wood",
+    name: "Tanvi Joshi",
     rollNumber: "22bcs026",
     status: "Processing",
     imageUrl: studentpic,
   },
-  // Add more students as needed
+  // Add more as needed
 ];
 
 const StudentInfo: React.FC = () => {
