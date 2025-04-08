@@ -3,3 +3,5 @@ python-dotenv
 pdfplumber
 groq
 langchain-pinecone
+flask
+flask-cors
