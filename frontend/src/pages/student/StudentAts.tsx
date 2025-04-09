@@ -3,16 +3,6 @@ import { useState } from "react";
 import { MenuItem2 } from "../../types";
 import axios from "axios";
 
-type Metric = {
-  name: string;
-  score: number;
-  maxScore: number;
-};
-
-type HistoryScore = {
-  score: number;
-  date: string;
-};
 const NavBarMenu: MenuItem2[] = [
   { id: 0, title: "Dashboard", link: "/student/dashboard" },
   { id: 1, title: "Resume", link: "/student/resume" },
@@ -25,26 +15,7 @@ const StudentAts = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [fileName, setFileName] = useState<string | null>(null);
   const [output, setOutput] = useState<string | null>(null);
-  const [averageScore, setAverageScore] = useState<number>(0); // Default score is 0
-
-  const metrics: Metric[] = [
-    { name: "Keyword Matching", score: 5, maxScore: 10 },
-    { name: "Resume Formatting", score: 7, maxScore: 10 },
-    { name: "Section Organization", score: 8, maxScore: 10 },
-    { name: "Job Title Relevance", score: 5, maxScore: 10 },
-    { name: "Bullet Points", score: 8, maxScore: 10 },
-    { name: "Skill Context", score: 8, maxScore: 10 },
-  ];
-
-  const historyScores: HistoryScore[] = [
-    { score: 5.0, date: "2 weeks ago" },
-    { score: 5.0, date: "10 days ago" },
-    { score: 6.5, date: "1 week ago" },
-    { score: 7.0, date: "5 days ago" },
-    { score: 6.8, date: "3 days ago" },
-    { score: 8.0, date: "2 days ago" },
-    { score: 7.6, date: "Today" },
-  ];
+  const [averageScore, setAverageScore] = useState<number>(0);
 
   const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -80,11 +51,10 @@ const StudentAts = () => {
           }
         );
 
-        // Extract the ATS score from the first line of the output
         const output = response.data.output;
-        const atsScore = parseFloat(output.split("\n")[0]); // First line contains the ATS score
-        setOutput(output); // Store the full output
-        setAverageScore(atsScore / 10); // Update the infographic score
+        const atsScore = parseFloat(output.split("\n")[0]);
+        setOutput(output);
+        setAverageScore(atsScore / 10);
       } catch (error: any) {
         console.error("Error uploading file:", error);
         setOutput(
@@ -92,13 +62,6 @@ const StudentAts = () => {
         );
       }
     }
-  };
-
-  const getScoreColor = (score: number, maxScore: number) => {
-    const percentage = (score / maxScore) * 100;
-    if (percentage >= 70) return "bg-success-500";
-    if (percentage >= 50) return "bg-warning-500";
-    return "bg-danger-500";
   };
 
   const getOverallScoreColor = (score: number) => {
@@ -170,153 +133,191 @@ const StudentAts = () => {
             </div>
           </div>
 
-          {/* Score Analysis */}
-          <div className="mb-10">
-            <div className="flex flex-col md:flex-row gap-8">
-              {/* Current Score */}
-              <div className="flex flex-col items-center p-6 bg-gray-50 rounded-xl w-full md:w-1/3">
-                <h2 className="text-xl font-semibold text-gray-700 mb-4">
-                  Your ATS Score
-                </h2>
-                <div className="relative w-40 h-40 mb-4">
-                  <svg className="w-full h-full" viewBox="0 0 100 100">
-                    <circle
-                      cx="50"
-                      cy="50"
-                      r="45"
-                      fill="none"
-                      stroke="#e5e7eb"
-                      strokeWidth="8"
-                    />
-                    <circle
-                      cx="50"
-                      cy="50"
-                      r="45"
-                      fill="none"
-                      stroke={
-                        averageScore >= 7
-                          ? "#10b981"
-                          : averageScore >= 5
-                          ? "#f59e0b"
-                          : "#ef4444"
-                      }
-                      strokeWidth="8"
-                      strokeDasharray={`${(averageScore / 10) * 283} 283`}
-                      strokeLinecap="round"
-                      transform="rotate(-90 50 50)"
-                    />
-                  </svg>
-                  <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <span
-                      className={`text-4xl font-bold ${getOverallScoreColor(
-                        averageScore
-                      )}`}
-                    >
-                      {averageScore.toFixed(1)}
-                    </span>
-                    <span className="text-gray-500">/10</span>
-                  </div>
-                </div>
-                <p className="text-gray-600">
-                  {averageScore >= 7
-                    ? "Excellent! Keep it up"
-                    : averageScore >= 5
-                    ? "Good, but could be improved"
-                    : "Needs significant improvement"}
-                </p>
-              </div>
-
-              {/* Metrics */}
-              <div className="w-full md:w-2/3">
-                <h2 className="text-xl font-semibold text-gray-700 mb-4">
-                  Detailed Analysis
-                </h2>
-                <div className="grid grid-cols-1 gap-4">
-                  {metrics.map((metric, index) => (
-                    <div key={index} className="bg-gray-50 p-4 rounded-lg">
-                      <div className="flex justify-between mb-2">
-                        <span className="font-medium text-gray-700">
-                          {metric.name}
-                        </span>
-                        <span className="font-semibold">
-                          {metric.score}/{metric.maxScore}
-                        </span>
-                      </div>
-                      <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div
-                          className={`h-2.5 rounded-full ${getScoreColor(
-                            metric.score,
-                            metric.maxScore
-                          )}`}
-                          style={{
-                            width: `${(metric.score / metric.maxScore) * 100}%`,
-                          }}
-                        ></div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <button className="mt-6 px-4 py-2 text-primary-500 font-medium hover:text-primary-600 transition-colors flex items-center">
-                  View Detailed Analysis
-                  <svg
-                    className="w-4 h-4 ml-2"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* Score History */}
-          <div>
+          {/* Current Score */}
+          <div className="flex flex-col items-center p-6 bg-gray-50 rounded-xl mb-10">
             <h2 className="text-xl font-semibold text-gray-700 mb-4">
-              Score History
+              Your ATS Score
             </h2>
-            <div className="flex items-end h-40 gap-2 mt-6">
-              {historyScores.map((history, index) => {
-                const height = (history.score / 10) * 100;
-                return (
-                  <div
-                    key={index}
-                    className="flex-1 flex flex-col items-center"
-                  >
-                    <div
-                      className={`w-full rounded-t-lg ${
-                        history.score >= 7
-                          ? "bg-success-500"
-                          : history.score >= 5
-                          ? "bg-warning-500"
-                          : "bg-danger-500"
-                      }`}
-                      style={{ height: `${height}%` }}
-                    >
-                      <span className="flex items-center justify-center h-full text-white font-medium text-xs">
-                        {history.score}
-                      </span>
-                    </div>
-                    <span className="text-xs text-gray-500 mt-2">
-                      {history.date}
-                    </span>
-                  </div>
-                );
-              })}
+            <div className="relative w-40 h-40 mb-4">
+              <svg className="w-full h-full" viewBox="0 0 100 100">
+                <circle
+                  cx="50"
+                  cy="50"
+                  r="45"
+                  fill="none"
+                  stroke="#e5e7eb"
+                  strokeWidth="8"
+                />
+                <circle
+                  cx="50"
+                  cy="50"
+                  r="45"
+                  fill="none"
+                  stroke={
+                    averageScore >= 7
+                      ? "#10b981"
+                      : averageScore >= 5
+                      ? "#f59e0b"
+                      : "#ef4444"
+                  }
+                  strokeWidth="8"
+                  strokeDasharray={`${(averageScore / 10) * 283} 283`}
+                  strokeLinecap="round"
+                  transform="rotate(-90 50 50)"
+                />
+              </svg>
+              <div className="absolute inset-0 flex flex-col items-center justify-center">
+                <span
+                  className={`text-4xl font-bold ${getOverallScoreColor(
+                    averageScore
+                  )}`}
+                >
+                  {averageScore.toFixed(1)}
+                </span>
+                <span className="text-gray-500">/10</span>
+              </div>
             </div>
+            <p className="text-gray-600">
+              {averageScore >= 7
+                ? "Excellent! Keep it up"
+                : averageScore >= 5
+                ? "Good, but could be improved"
+                : "Needs significant improvement"}
+            </p>
           </div>
+
+          {/* Analysis Output */}
           {output && (
-            <div className="mt-10">
-              <h2 className="text-xl font-semibold text-gray-700 mb-4">
-                Analysis Output
-              </h2>
-              <pre className="bg-gray-100 p-4 rounded-lg">{output}</pre>
+            <div className="mt-6">
+              <div className="flex items-center gap-3 mb-6">
+                <h2 className="text-2xl font-bold text-gray-800">
+                  Detailed Analysis Report
+                </h2>
+                <span className="px-3 py-1 rounded-full bg-primary-100 text-primary-600 text-sm font-medium">
+                  {averageScore >= 7
+                    ? "Great Fit"
+                    : averageScore >= 5
+                    ? "Moderate Fit"
+                    : "Needs Work"}
+                </span>
+              </div>
+
+              <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-xl border border-gray-200 shadow-sm">
+                <div className="grid gap-4">
+                  {output.split("\n").map((line, index) => {
+                    const isCritical =
+                      line.toLowerCase().includes("missing") ||
+                      line.toLowerCase().includes("improve") ||
+                      line.toLowerCase().includes("lack");
+                    const isPositive =
+                      line.toLowerCase().includes("good") ||
+                      line.toLowerCase().includes("strong") ||
+                      line.toLowerCase().includes("excellent");
+
+                    return (
+                      <div
+                        key={index}
+                        className={`p-4 rounded-lg transition-all ${
+                          isCritical
+                            ? "bg-red-50 border border-red-200 hover:border-red-300"
+                            : isPositive
+                            ? "bg-green-50 border border-green-200 hover:border-green-300"
+                            : "bg-white border border-gray-100 hover:border-gray-200"
+                        }`}
+                      >
+                        <div className="flex items-start gap-3">
+                          <div
+                            className={`flex-shrink-0 mt-1 ${
+                              isCritical
+                                ? "text-red-500"
+                                : isPositive
+                                ? "text-green-500"
+                                : "text-primary-500"
+                            }`}
+                          >
+                            {isCritical ? (
+                              <svg
+                                className="w-5 h-5"
+                                fill="currentColor"
+                                viewBox="0 0 20 20"
+                              >
+                                <path
+                                  fillRule="evenodd"
+                                  d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z"
+                                  clipRule="evenodd"
+                                />
+                              </svg>
+                            ) : isPositive ? (
+                              <svg
+                                className="w-5 h-5"
+                                fill="currentColor"
+                                viewBox="0 0 20 20"
+                              >
+                                <path
+                                  fillRule="evenodd"
+                                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                  clipRule="evenodd"
+                                />
+                              </svg>
+                            ) : (
+                              <svg
+                                className="w-5 h-5"
+                                fill="currentColor"
+                                viewBox="0 0 20 20"
+                              >
+                                <path
+                                  fillRule="evenodd"
+                                  d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a.75.75 0 000 1.5h.253a.25.25 0 01.244.304l-.459 2.066A1.75 1.75 0 0010.747 15H11a.75.75 0 000-1.5h-.253a.25.25 0 01-.244-.304l.459-2.066A1.75 1.75 0 009.253 9H9z"
+                                  clipRule="evenodd"
+                                />
+                              </svg>
+                            )}
+                          </div>
+                          <p
+                            className={`text-sm leading-relaxed ${
+                              isCritical
+                                ? "text-red-700"
+                                : isPositive
+                                ? "text-green-700"
+                                : "text-gray-700"
+                            }`}
+                          >
+                            {line.replace(/•\s*/g, "")}
+                          </p>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                <div className="mt-6 p-4 bg-white rounded-lg border border-gray-200">
+                  <h3 className="text-sm font-semibold text-gray-800 mb-2">
+                    Key Takeaways
+                  </h3>
+                  <ul className="list-disc pl-5 space-y-2 text-sm text-gray-600">
+                    {averageScore >= 7 ? (
+                      <>
+                        <li>Your resume is well-optimized for ATS systems</li>
+                        <li>
+                          Maintain regular updates as you gain new experiences
+                        </li>
+                      </>
+                    ) : averageScore >= 5 ? (
+                      <>
+                        <li>Good foundation but needs some improvements</li>
+                        <li>Focus on keyword optimization and formatting</li>
+                      </>
+                    ) : (
+                      <>
+                        <li>
+                          Significant improvements needed for ATS compatibility
+                        </li>
+                        <li>Review missing keywords and section structure</li>
+                      </>
+                    )}
+                  </ul>
+                </div>
+              </div>
             </div>
           )}
         </div>
