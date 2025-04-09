@@ -79,7 +79,6 @@ def main():
     try:
         with open("paths.txt", "r") as file:
             resume_path = file.read().strip()  # Read and remove any extra whitespace
-            # print(f"Resume path read from paths.txt: {resume_path}")
     except FileNotFoundError:
         print("Error: paths.txt not found.")
         return
@@ -87,13 +86,16 @@ def main():
         print(f"Error reading paths.txt: {e}")
         return
 
-    # print("Enter the path to the Job Description (PDF File) or press Enter to skip:")
-    jd_path = "uploads\JD.pdf"
-
-    if jd_path.strip() == "":
+    try:
+        with open("respaths.txt", "r") as file:
+            jd_path = file.read().strip()  # Read and remove any extra whitespace
+    except FileNotFoundError:
+        jd_path = None  # If the file doesn't exist, set jd_path to None
+    except Exception as e:
+        print(f"Error reading respaths.txt: {e}")
         jd_path = None
 
-    analyze(resume_path,jd_path)
+    analyze(resume_path, jd_path)
 
 
 if __name__ == "__main__":

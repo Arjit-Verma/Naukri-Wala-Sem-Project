@@ -38,6 +38,26 @@ def upload_resume():
         return jsonify({"output": result.stdout})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+    
+@app.route("/upload-jd", methods=["POST"])
+def upload_jd():
+    if "jd" not in request.files:
+        return jsonify({"error": "No file uploaded"}), 400
+
+    file = request.files["jd"]
+    if file.filename == "":
+        return jsonify({"error": "No file selected"}), 400
+
+    # Save the uploaded JD file
+    file_path = os.path.join(UPLOAD_FOLDER, file.filename)
+    file.save(file_path)
+
+    # Save the JD path to respaths.txt
+    with open("respaths.txt", "w") as f:
+        f.write(file_path)
+
+    print(f"Job description saved to {file_path}")
+    return jsonify({"message": "Job description uploaded successfully!"})
 
 
 if __name__ == "__main__":
