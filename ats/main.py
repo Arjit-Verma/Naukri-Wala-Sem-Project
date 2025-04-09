@@ -76,11 +76,19 @@ def analyze(resume_path,jd_path):
     print(chat_completion.choices[0].message.content)
 
 def main():
-    print("Enter the path to your Resume (PDF File):")
-    resume_path = input()
+    try:
+        with open("paths.txt", "r") as file:
+            resume_path = file.read().strip()  # Read and remove any extra whitespace
+            print(f"Resume path read from paths.txt: {resume_path}")
+    except FileNotFoundError:
+        print("Error: paths.txt not found.")
+        return
+    except Exception as e:
+        print(f"Error reading paths.txt: {e}")
+        return
 
-    print("Enter the path to the Job Description (PDF File) or press Enter to skip:")
-    jd_path = input()
+    # print("Enter the path to the Job Description (PDF File) or press Enter to skip:")
+    jd_path = ""
 
     if jd_path.strip() == "":
         jd_path = None

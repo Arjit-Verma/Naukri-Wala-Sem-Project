@@ -1,6 +1,7 @@
 import StakeNavBar from "../../functions/StakeNavBar";
 import { useState } from "react";
 import { MenuItem2 } from "../../types";
+import axios from "axios";
 
 type Metric = {
   name: string;
@@ -23,6 +24,7 @@ const NavBarMenu: MenuItem2[] = [
 const StudentAts = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [fileName, setFileName] = useState<string | null>(null);
+  const [output, setOutput] = useState<string | null>(null);
 
   const metrics: Metric[] = [
     { name: "Keyword Matching", score: 5, maxScore: 10 },
@@ -65,9 +67,29 @@ const StudentAts = () => {
     }
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
-      setFileName(e.target.files[0].name);
+      const file = e.target.files[0];
+      setFileName(file.name);
+
+      const formData = new FormData();
+      formData.append("resume", file);
+
+      try {
+        const response = await axios.post(
+          "http://127.0.0.1:8000/upload-resume",
+          formData,
+          {
+            headers: { "Content-Type": "multipart/form-data" },
+          }
+        );
+        setOutput(response.data.output);
+      } catch (error: any) {
+        console.error("Error uploading file:", error);
+        setOutput(
+          error.response?.data?.error || "Failed to process the resume."
+        );
+      }
     }
   };
 
@@ -288,6 +310,14 @@ const StudentAts = () => {
               })}
             </div>
           </div>
+          {output && (
+            <div className="mt-10">
+              <h2 className="text-xl font-semibold text-gray-700 mb-4">
+                Analysis Output
+              </h2>
+              <pre className="bg-gray-100 p-4 rounded-lg">{output}</pre>
+            </div>
+          )}
         </div>
       </div>
     </div>
