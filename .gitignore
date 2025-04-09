@@ -153,3 +153,4 @@ dist-ssr
 __pycache__
 uploads
 paths.txt
+respaths.txt

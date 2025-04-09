@@ -86,7 +86,8 @@ const StudentAts = () => {
           </div>
 
           {/* Upload Section */}
-          <div className="mb-10">
+          <div className="mb-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Resume Upload Section */}
             <div
               className={`border-2 border-dashed rounded-xl p-8 text-center transition-colors ${
                 isDragging
@@ -123,6 +124,77 @@ const StudentAts = () => {
               />
               <label
                 htmlFor="resume-upload"
+                className="inline-block px-6 py-2 bg-primary-500 text-white rounded-lg cursor-pointer hover:bg-primary-600 transition-colors"
+              >
+                Browse Files
+              </label>
+              <p className="text-sm text-gray-400 mt-3">
+                Supports: PDF, DOCX, TXT (Max 5MB)
+              </p>
+            </div>
+
+            {/* Job Description Upload Section */}
+            <div
+              className={`border-2 border-dashed rounded-xl p-8 text-center transition-colors ${
+                isDragging
+                  ? "border-primary-500 bg-primary-50"
+                  : "border-gray-300"
+              }`}
+              onDragOver={handleDragOver}
+              onDragLeave={handleDragLeave}
+              onDrop={handleDrop}
+            >
+              <div className="flex justify-center mb-4">
+                <svg
+                  className={`w-12 h-12 ${
+                    isDragging ? "text-primary-500" : "text-gray-400"
+                  }`}
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
+                </svg>
+              </div>
+              <h3 className="text-lg font-medium text-gray-700 mb-2">
+                Upload Job Description
+              </h3>
+              <p className="text-gray-500 mb-4">
+                {fileName
+                  ? fileName
+                  : "Drag and drop the job description here or"}
+              </p>
+              <input
+                type="file"
+                id="jd-upload"
+                className="hidden"
+                accept=".pdf,.docx,.txt"
+                onChange={async (e) => {
+                  if (e.target.files && e.target.files.length > 0) {
+                    const jdFile = e.target.files[0];
+                    setFileName(jdFile.name); // Update state for JD file
+
+                    const formData = new FormData();
+                    formData.append("jd", jdFile);
+
+                    try {
+                      // Send the JD file to the backend
+                      await axios.post(
+                        "http://127.0.0.1:8000/upload-jd",
+                        formData,
+                        {
+                          headers: { "Content-Type": "multipart/form-data" },
+                        }
+                      );
+                      alert("Job description uploaded successfully!");
+                    } catch (error) {
+                      console.error("Error uploading JD file:", error);
+                      alert("Failed to upload the job description.");
+                    }
+                  }
+                }}
+              />
+              <label
+                htmlFor="jd-upload"
                 className="inline-block px-6 py-2 bg-primary-500 text-white rounded-lg cursor-pointer hover:bg-primary-600 transition-colors"
               >
                 Browse Files
