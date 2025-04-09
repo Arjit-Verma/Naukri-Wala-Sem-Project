@@ -17,8 +17,7 @@ import {
 import arjit from "../assets/arjit.jpg";
 import sreehitha from "../assets/sreehitha.jpg";
 import digant from "../assets/digant.jpg";
-
-import pic from "../assets/digant.jpg";
+import azmi from "../assets/azmi.jpg";
 const NavBarMenu: MenuItem[] = [
   { id: 0, title: "Info", link: "/" },
   { id: 1, title: "Students", link: "/student" },
@@ -31,7 +30,7 @@ const AboutUsPage = () => {
   const teamMembers = [
     {
       name: "Digant Singh",
-      role: "Absent Father",
+      role: "Strong Words",
       pic: digant,
       bio: "Data and Magic. Also words",
       funFact: "Lowkey Cool",
@@ -56,21 +55,21 @@ const AboutUsPage = () => {
       role: "Data Scientist",
       pic: "",
       bio: "Turns raw data into actionable insights and smart algorithms",
-      funFact: "",
+      funFact: "Can focus on multiple of things",
     },
     {
       name: "Nomtha Prakash",
       role: "DevOps Engineer",
       pic: "",
       bio: "Keeps our systems running smoothly 24/7",
-      funFact: "Amateur drone photographer",
+      funFact: "Designer in sheets",
     },
     {
       name: "Azmi Nabeel",
-      role: "Competitive Programmer",
-      pic: "",
-      bio: "Ensures every user gets the most from our platform",
-      funFact: "Has visited 15 countries",
+      role: "Slightly Lazy",
+      pic: azmi,
+      bio: "Competitive Programmer and Consistently Online",
+      funFact: "Lowkey Lazy, Highkey efficient",
     },
   ];
 
