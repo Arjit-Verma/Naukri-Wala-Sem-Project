@@ -18,6 +18,7 @@ import arjit from "../assets/arjit.jpg";
 import sreehitha from "../assets/sreehitha.jpg";
 import digant from "../assets/digant.jpg";
 import azmi from "../assets/azmi.jpg";
+import srikar from "../assets/srikar.jpg";
 const NavBarMenu: MenuItem[] = [
   { id: 0, title: "Info", link: "/" },
   { id: 1, title: "Students", link: "/student" },
@@ -53,7 +54,7 @@ const AboutUsPage = () => {
     {
       name: "Srikar Emani",
       role: "Data Scientist",
-      pic: "",
+      pic: srikar,
       bio: "Turns raw data into actionable insights and smart algorithms",
       funFact: "Can focus on multiple of things",
     },
