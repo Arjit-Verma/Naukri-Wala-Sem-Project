@@ -32,8 +32,8 @@ export default function CompanyApplication() {
   const [students] = useState<Student2[]>([
     {
       id: 1,
-      name: "John Doe",
-      college: "IIIT DWD",
+      name: "Aarav Mehta",
+      college: "IIIT Hyderabad",
       branch: "Computer Science",
       gpa: 7.8,
       status: "Recruited",
@@ -41,8 +41,8 @@ export default function CompanyApplication() {
     },
     {
       id: 2,
-      name: "Jane Smith",
-      college: "IIIT DWD",
+      name: "Bhavya Sharma",
+      college: "IIT Madras",
       branch: "Information Technology",
       gpa: 9.6,
       status: "Recruited",
@@ -50,7 +50,7 @@ export default function CompanyApplication() {
     },
     {
       id: 3,
-      name: "Alice Johnson",
+      name: "Charvi Reddy",
       college: "IIIT DWD",
       branch: "Software Engineering",
       gpa: 8.9,
@@ -59,8 +59,8 @@ export default function CompanyApplication() {
     },
     {
       id: 4,
-      name: "Bob Brown",
-      college: "IIIT DWD",
+      name: "Devansh Nair",
+      college: "IIIT Bangalore",
       branch: "Cybersecurity",
       gpa: 8.5,
       status: "Rejected",
@@ -68,8 +68,8 @@ export default function CompanyApplication() {
     },
     {
       id: 5,
-      name: "Charlie Green",
-      college: "IIIT DWD",
+      name: "Esha Gupta",
+      college: "IIT Delhi",
       branch: "Data Science",
       gpa: 8.7,
       status: "Recruited",
@@ -77,8 +77,8 @@ export default function CompanyApplication() {
     },
     {
       id: 6,
-      name: "Diana White",
-      college: "IIIT DWD",
+      name: "Farhan Shaikh",
+      college: "IIIT Pune",
       branch: "Web Development",
       gpa: 8.4,
       status: "Rejected",
@@ -86,7 +86,7 @@ export default function CompanyApplication() {
     },
     {
       id: 7,
-      name: "Ethan Black",
+      name: "Garima Sen",
       college: "IIIT DWD",
       branch: "Mobile Development",
       gpa: 7.9,
@@ -95,8 +95,8 @@ export default function CompanyApplication() {
     },
     {
       id: 8,
-      name: "Fiona Blue",
-      college: "IIIT DWD",
+      name: "Harshita Pillai",
+      college: "IIT Kharagpur",
       branch: "Artificial Intelligence",
       gpa: 8.8,
       status: "Recruited",
@@ -104,8 +104,8 @@ export default function CompanyApplication() {
     },
     {
       id: 9,
-      name: "George Yellow",
-      college: "IIIT DWD",
+      name: "Ishaan Verma",
+      college: "IIIT Allahabad",
       branch: "Game Development",
       gpa: 7.3,
       status: "Rejected",
@@ -113,7 +113,7 @@ export default function CompanyApplication() {
     },
     {
       id: 10,
-      name: "Hannah Pink",
+      name: "Jhanvi Deshmukh",
       college: "IIIT DWD",
       branch: "Network Engineering",
       gpa: 7.6,
@@ -121,6 +121,7 @@ export default function CompanyApplication() {
       position: "Network Engineer",
     },
   ]);
+
   // Calculate position statistics
   const positionStats: PositionStats[] = students.reduce((acc, student) => {
     const existingPosition = acc.find((p) => p.position === student.position);
