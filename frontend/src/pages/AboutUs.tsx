@@ -14,6 +14,9 @@ import {
   Settings,
   Zap,
 } from "lucide-react";
+import arjit from "../assets/arjit.jpg";
+import sreehitha from "../assets/sreehitha.jpg";
+import digant from "../assets/digant.jpg";
 
 import pic from "../assets/digant.jpg";
 const NavBarMenu: MenuItem[] = [
@@ -29,41 +32,42 @@ const AboutUsPage = () => {
     {
       name: "Digant Singh",
       role: "Absent Father",
-      pic: "",
+      pic: digant,
       bio: "Data and Magic. Also words",
-      funFact: "Lowkey Cool(maybe)",
+      funFact: "Lowkey Cool",
     },
     {
-      name: "Priya Patel",
-      role: "UI/UX Designer",
-      pic: "",
-      bio: "Creates interfaces that delight users and solve real problems",
-      funFact: "Former professional illustrator",
+      name: "Arjit Verma",
+      role: "Sneaky Awesome",
+      pic: arjit,
+      bio: "Developer,Learner and Sligthly Epic",
+      funFact: "Can pull things off",
     },
     {
-      name: "Marcus Johnson",
-      role: "Product Manager",
-      pic: "",
-      bio: "Bridges technical and business needs with user-focused solutions",
-      funFact: "Speaks 4 languages fluently",
+      name: "K. Sreehitha",
+      role: "Focus Freak",
+      pic: sreehitha,
+      bio: "Doing my thing ,one day at a time",
+      funFact:
+        "Once googled how to become a billionar and took notes seriously",
     },
     {
-      name: "Sarah Kim",
+      name: "Srikar Emani",
       role: "Data Scientist",
       pic: "",
       bio: "Turns raw data into actionable insights and smart algorithms",
-      funFact: "Competitive chess player",
+      funFact: "",
     },
     {
-      name: "David Wilson",
+      name: "Nomtha Prakash",
       role: "DevOps Engineer",
       pic: "",
       bio: "Keeps our systems running smoothly 24/7",
       funFact: "Amateur drone photographer",
     },
     {
-      name: "Elena Rodriguez",
-      role: "Customer Success",
+      name: "Azmi Nabeel",
+      role: "Competitive Programmer",
       pic: "",
       bio: "Ensures every user gets the most from our platform",
       funFact: "Has visited 15 countries",
@@ -236,7 +240,7 @@ const AboutUsPage = () => {
                 {/* <span className="text-5xl font-bold text-white">
                   {member.name.charAt(0)}
                 </span> */}
-                <img src={pic} alt="" />
+                <img src={member.pic} alt="" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900">
