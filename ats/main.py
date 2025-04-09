@@ -43,17 +43,17 @@ def analyze(resume_path,jd_path):
     resume_text = extract_text(resume_path)
     client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
 
-    prompt=""
+    prompt="Give an ATS Score/match score for Resume out of 100. Do not give a complete new resume, just give bullet points on how do I improve my resume? Please dont give any additional text. Output" \
+        "in following format. First line just the ATS Score numerical value out of 100(Just the value). Next line onwards the bullet points."
 
     if jd_path:
         jd_text = extract_text(jd_path)
         prompt+="Here is the job description: " + jd_text + "\n\n"
         prompt+="Here is my resume: " + resume_text +"\n\n"
         prompt+="Please analyze my resume and give a match score out of 100 for the job description.\n\n"
-        prompt+="Also, please provide feedback on how to improve my resume\n\n"
+        prompt+="Also, please provide feedback on how to improve my resume in bullet points. Follow the format throughout\n\n"
 
-        print("Do you want to improve your resume by adding relevant prjects and achievements? (y/n)")
-        choice=input()
+        choice="n"
 
         if choice.lower() == "y":
             relevant_data = get_from_embeddings(jd_text)
@@ -61,7 +61,7 @@ def analyze(resume_path,jd_path):
             prompt+=relevant_data + "\n\n"
 
     else:
-        prompt="How Do I improve my resume? Here is my resume: " + resume_text
+        prompt+="Here is my resume: " + resume_text
 
     chat_completion = client.chat.completions.create(
         messages=[
@@ -79,7 +79,7 @@ def main():
     try:
         with open("paths.txt", "r") as file:
             resume_path = file.read().strip()  # Read and remove any extra whitespace
-            print(f"Resume path read from paths.txt: {resume_path}")
+            # print(f"Resume path read from paths.txt: {resume_path}")
     except FileNotFoundError:
         print("Error: paths.txt not found.")
         return
@@ -88,7 +88,7 @@ def main():
         return
 
     # print("Enter the path to the Job Description (PDF File) or press Enter to skip:")
-    jd_path = ""
+    jd_path = "uploads\JD.pdf"
 
     if jd_path.strip() == "":
         jd_path = None

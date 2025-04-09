@@ -25,6 +25,7 @@ const StudentAts = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [fileName, setFileName] = useState<string | null>(null);
   const [output, setOutput] = useState<string | null>(null);
+  const [averageScore, setAverageScore] = useState<number>(0); // Default score is 0
 
   const metrics: Metric[] = [
     { name: "Keyword Matching", score: 5, maxScore: 10 },
@@ -44,11 +45,6 @@ const StudentAts = () => {
     { score: 8.0, date: "2 days ago" },
     { score: 7.6, date: "Today" },
   ];
-
-  const averageScore =
-    historyScores.reduce((acc, curr) => acc + curr.score, 0) /
-    historyScores.length;
-  const formattedAverageScore = averageScore.toFixed(1);
 
   const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -83,7 +79,12 @@ const StudentAts = () => {
             headers: { "Content-Type": "multipart/form-data" },
           }
         );
-        setOutput(response.data.output);
+
+        // Extract the ATS score from the first line of the output
+        const output = response.data.output;
+        const atsScore = parseFloat(output.split("\n")[0]); // First line contains the ATS score
+        setOutput(output); // Store the full output
+        setAverageScore(atsScore / 10); // Update the infographic score
       } catch (error: any) {
         console.error("Error uploading file:", error);
         setOutput(
@@ -211,7 +212,7 @@ const StudentAts = () => {
                         averageScore
                       )}`}
                     >
-                      {formattedAverageScore}
+                      {averageScore.toFixed(1)}
                     </span>
                     <span className="text-gray-500">/10</span>
                   </div>
